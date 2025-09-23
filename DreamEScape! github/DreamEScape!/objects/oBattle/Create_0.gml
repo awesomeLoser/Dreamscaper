@@ -86,8 +86,27 @@ function BattleStateSelectAction()
         return;
     }
 
-    // For now, every unit attacks itself
-    BeginAction(_unit.id, global.actionLibrary.attack, _unit.id);
+    // every unit attacks itself if below code uncommented
+    //BeginAction(_unit.id, global.actionLibrary.attack, _unit.id);
+	
+	//if unit is player controlled
+	if (_unit.object_index == oBattleUnitPC)
+	{
+		 //attack random enemy (will be changed or removed when options can be selected)
+			  var _action = global.actionLibrary.attack;
+			  var _possibleTargets = array_filter(oBattle.enemyUnits, function(_unit, _index) 
+			  {
+				  return (_unit.hp > 0);
+			  });
+			  var _target = _possibleTargets[irandom(array_length(_possibleTargets)-1)]
+			  BeginAction(_unit.id, _action, _target);
+	}
+	else
+	{
+		//if unit is ai controlled	
+		var _enemyAction = _unit.AIscript();
+		if (_enemyAction != 1) BeginAction(_unit.id, _enemyAction[0], _enemyAction[1])
+	}
 }
 
 // Begin the action (animation + target setup)
