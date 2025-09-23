@@ -38,8 +38,8 @@ global.party =
 
 	{
 	 name: "test_char",
-	 hp: 89,
-	 hpMax: 89,
+	 hp: 89000,
+	 hpMax: 890000,
 	 mp: 10,
 	 mpMax: 15,
 	 strength: 16,
@@ -51,8 +51,8 @@ global.party =
 	,
 	{
 	 name: "test_char_2",
-	 hp: 89,
-	 hpMax: 89,
+	 hp: 89000,
+	 hpMax: 8900000,
 	 mp: 10,
 	 mpMax: 15,
 	 strength: 16,
@@ -70,8 +70,8 @@ global.party =
 		  tree_test: 
 		 {
 		  name: "Tree_test",	
-		  hp: 30,
-		  hpMax: 30,
+		  hp: 3000000,
+		  hpMax: 3000000,
 		  mp: 0,
 		  mpMax: 0,
 		  strength: 5,
