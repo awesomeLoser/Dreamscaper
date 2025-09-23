@@ -1,149 +1,200 @@
+// -----------------------------
+// Battle Setup
+// -----------------------------
 instance_deactivate_all(true);
 
 units = [];
+enemyUnits = [];
+partyUnits = [];
 turn = 0;
 unitTurnOrder = [];
 unitRenderOrder = [];
 
 turnCount = 0;
 roundCount = 0;
-BattleWaitTimeFrames = 30;
+battleWaitTimeFrames = 30;
 battleWaitTimeRemaining = 0;
+
 currentUser = noone;
 currentAction = -1;
 currentTargets = noone;
 
-
-//make enemies
+// -----------------------------
+// Create Enemies (array-safe)
+// -----------------------------
 for (var i = 0; i < array_length(enemies); i++)
 {
-	enemyUnits[i] = instance_create_depth(x+250+(i*10), y+68+(i*20), depth-10, oBattleUnitEnemy, enemies[i]);
-	array_push(units, enemyUnits[i]);
+    var enemyData = enemies[i]; // already a struct
+    var inst = instance_create_depth(
+        x + 250 + (i * 10),
+        y + 68 + (i * 20),
+        depth - 10,
+        oBattleUnitEnemy,
+        enemyData
+    );
+    enemyUnits[i] = inst;
+    array_push(units, inst);
 }
 
-//make party
+// -----------------------------
+// Create Party Units
+// -----------------------------
 for (var i = 0; i < array_length(global.party); i++)
 {
-	partyUnits[i] = instance_create_depth(x+70+(i*10), y+68+(i*15), depth-10, oBattleUnitPC, global.party[i]);
-	array_push(units, partyUnits[i]);
+    var inst = instance_create_depth(
+        x + 70 + (i * 10),
+        y + 68 + (i * 15),
+        depth - 10,
+        oBattleUnitPC,
+        global.party[i]
+    );
+    partyUnits[i] = inst;
+    array_push(units, inst);
 }
 
-//Shuffle turn order
+// -----------------------------
+// Shuffle Turn Order
+// -----------------------------
 unitTurnOrder = array_shuffle(units);
 
-//Get render order
+// -----------------------------
+// Render Order
+// -----------------------------
 RefreshRenderOrder = function()
 {
- unitRenderOrder = [];
- array_copy(unitRenderOrder,0,units,0,array_length(units));
- array_sort(unitRenderOrder,function(_1,_2)
-	{
-		return _1.y - _2.y;	
-	});
+    unitRenderOrder = [];
+    array_copy(unitRenderOrder, 0, units, 0, array_length(units));
+    array_sort(unitRenderOrder, function(_1, _2)
+    {
+        return _1.y - _2.y;
+    });
 }
 RefreshRenderOrder();
 
+// -----------------------------
+// Battle States
+// -----------------------------
+
+// Select current unit and begin action
 function BattleStateSelectAction()
 {
-	//get current unit
-	var _unit = unitTurnOrder[turn];
-	
-	//is the unit dead/unable to act??
-	if (!instance_exists(_unit) || (_unit.hp <= 0))
-		{
-			battleState = BattleStateVictoryCheck;
-			exit;
-		}
-		
-	//select thing to do 
-	BeginAction(_unit.id, global.actionLibrary.attack, _unit.id);
+    var _unit = unitTurnOrder[turn];
+
+    if (!instance_exists(_unit) || (_unit.hp <= 0))
+    {
+        battleState = BattleStateVictoryCheck;
+        return;
+    }
+
+    // For now, every unit attacks itself
+    BeginAction(_unit.id, global.actionLibrary.attack, _unit.id);
 }
 
+// Begin the action (animation + target setup)
 function BeginAction(_user, _action, _targets)
 {
-	currentUser = _user;
-	currentAction = _action;
-	currentTargets = _targets;
-	if (!is_array(currentTargets)) currentTargets = [currentTargets];
-	battleWaitTimeRemaining = BattleWaitTimeFrames;
-	with (_user)
-	{
-		acting = true;
-		//play user action if it is defined for that action and that user
-		if (!is_undefined(_action[$ "userAnimation"])) && (!is_undefined(_user.sprites[$ _action.userAnimation]))
-		{
-			sprite_index = sprites[$ _action.userAnimation];
-			image_index = 0;
-		}
-	}
-	battleState = BattleStatePerformAction;
+    currentUser = _user;
+    currentAction = _action;
+    currentTargets = _targets;
+
+    if (!is_array(currentTargets)) currentTargets = [currentTargets];
+
+    battleWaitTimeRemaining = battleWaitTimeFrames;
+
+    with (_user)
+    {
+        acting = true;
+
+        if (!is_undefined(_action[$ "userAnimation"]) && !is_undefined(_user.sprites[$ _action.userAnimation]))
+        {
+            sprite_index = sprites[$ _action.userAnimation];
+            image_index = 0;
+        }
+    }
+
+    battleState = BattleStatePerformAction;
 }
 
+// Perform action: animation, effect, damage, then advance turn
 function BattleStatePerformAction()
 {
-	//if animation ect is still playing
-	if(currentUser.acting)
-	{
-		//when it ends, perform actions if it exists
-		if (currentUser.image_index >= currentUser.image_number -1)
-		{
-			with (currentUser)
-			{
-			  sprite_index = sprites.idle;
-			  image_index = 0;
-			  acting = false;
-			}
-			
-			if (variable_struct_exists(currentAction, "effectSprite"))
-			{
-				if (currentAction.effectOnTarget == MODE.ALWAYS) || ( (currentAction.effectOnTarget == MODE.VARIES) && (array_length(currentTargets) <= 1 ))
-				{
-					for (var i = 0; i <array_length(currentTargets); i++)
-					{
-						instance_create_depth(currentTargets[i].x, currentTargets[i].y, currentTargets[i].depth-1, oBattleEffect,{sprite_index : currentAction.effectSprite});	
-					}
-				}
-				else //plat it at 0.0 (middle of screen)
-				{
-					var _effectSprite = currentAction._effectSpritei
-					if (variable_struct_exists(currentAction, "effectSpriteNoTarget")) _effectSprite = currentAction.effectSpriteNoTarget;
-					instance_create_depth(x,y,depth-100,oBattleEffect,{sprite_index : _effectSprite});
-				}
-				
-			}
-			currentAction.func(currentUser, currentTargets);
-		}
-			else //wait for delay and then end the turn
-	{
-		if (!instance_exists(oBattleEffect))
-		{
-			battleWaitTimeRemaining--
-			if (battleWaitTimeRemaining == 0)
-			{
-				battleState = BattleStateVictoryCheck;	
-			}
-		}
-	}
+    if (!instance_exists(currentUser)) return;
 
-	
+    if (currentUser.acting)
+    {
+        // Wait until animation ends
+        if (currentUser.image_index >= currentUser.image_number - 1)
+        {
+            with (currentUser)
+            {
+                sprite_index = sprites.idle;
+                image_index = 0;
+                acting = false;
+            }
+
+            // Spawn effect if defined
+            if (variable_struct_exists(currentAction, "effectSprite"))
+            {
+                for (var i = 0; i < array_length(currentTargets); i++)
+                {
+                    instance_create_depth(
+                        currentTargets[i].x,
+                        currentTargets[i].y,
+                        currentTargets[i].depth - 1,
+                        oBattleEffect,
+                        {sprite_index: currentAction.effectSprite}
+                    );
+                }
+            }
+
+            // Apply the action effect
+            currentAction.func(currentUser, currentTargets);
+
+            // Reset currentUser **after action fully completes**
+            currentUser = noone;
+
+            // Progress to next turn
+            battleState = BattleStateTurnProgression;
+        }
+    }
+    else
+    {
+        // Countdown wait time if no animation is running
+        if (!instance_exists(oBattleEffect))
+        {
+            battleWaitTimeRemaining--;
+            if (battleWaitTimeRemaining <= 0)
+            {
+                currentUser = noone;
+                battleState = BattleStateTurnProgression;
+            }
+        }
+    }
 }
-}
+
+// Victory check (unchanged)
 function BattleStateVictoryCheck()
 {
-	battleState = BattleStateTurnProgression;
+    battleState = BattleStateTurnProgression;
 }
 
+// Turn progression (fixed)
 function BattleStateTurnProgression()
 {
-	turnCount++;
-	turn++;
-	//Loop turns
-	if (turn <array_length(unitTurnOrder) -1)
-	{
-		turn = 0;
-		roundCount++;
-	}
-	battleState = BattleStateSelectAction;
+    turn++;
+
+    // Loop back to first unit if needed
+    if (turn >= array_length(unitTurnOrder))
+    {
+        turn = 0;
+        roundCount++;
+    }
+
+    // Pick the next unit to act
+    battleState = BattleStateSelectAction;
 }
 
+// -----------------------------
+// Start the battle
+// -----------------------------
 battleState = BattleStateSelectAction;
