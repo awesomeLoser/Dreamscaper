@@ -22,7 +22,7 @@ global.actionLibrary =
 	{
 		name : "Ice",
 		description : "{0} casts Ice!",
-		SubMenu : "Magic",
+		subMenu : "Magic",
 		mpCost : 4,
 		targetRequired : true,
 		targetEnemyByDeafult : true, //0: party/self, 1: enemy
