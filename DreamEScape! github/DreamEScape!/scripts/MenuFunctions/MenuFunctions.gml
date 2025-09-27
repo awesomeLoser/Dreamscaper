@@ -1,7 +1,7 @@
 /// @desc Menu - makes a menu, options provided in the form [["name", function, argument], [...]]
 function Menu(_x,_y, _options, _description = -1, _width = undefined, _height = undefined)
 {
-	with (instance_create_depth(_x,_y,-9999999999999999999999999999999999999999999999999999999999999999999999999,oMenu))
+	with (instance_create_depth(_x,_y,-9999999999999999,oMenu))
 	{
 		options = _options;
 		description = _description;
@@ -60,3 +60,29 @@ function MenuGoBack()
 	options = optionsAbove[subMenuLevel];
 	hover = 0;
 }
+
+function MenuSelectAction(_user, _action)
+{
+	with (oMenu) active = false;
+	with (oBattle) BeginAction(_user, _action, _user);
+	with (oMenu) instance_destroy();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
