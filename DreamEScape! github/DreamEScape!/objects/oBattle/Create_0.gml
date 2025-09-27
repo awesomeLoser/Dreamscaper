@@ -78,7 +78,7 @@ RefreshRenderOrder();
 // Select current unit and begin action
 function BattleStateSelectAction()
 {
-		if(instance_exists(oMenu))
+		if(!instance_exists(oMenu))
 		{
 		//get current unit
 	    var _unit = unitTurnOrder[turn];
@@ -115,11 +115,11 @@ function BattleStateSelectAction()
 					//create or add to a submenu
 					if (is_undefined(_subMenus[$ _action.subMenu]))
 					{
-						variable_struct_set(_subMenus, action.subMenu, [[_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]]);	
+						variable_struct_set(_subMenus, _action.subMenu, [[_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]]);	
 					}
 					else
 					{
-						array_push(_subMenus[$ action.subMenu], action.subMenu, [[_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]]);	
+						array_push(_subMenus[$ _action.subMenu], _action.subMenu, [[_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]]);	
 					}
 				}
 				
