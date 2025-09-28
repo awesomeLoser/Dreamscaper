@@ -19,6 +19,21 @@ currentUser = noone;
 currentAction = -1;
 currentTargets = noone;
 
+subMenuLevel = 0;
+
+
+//Make targeting cursor
+cursor =
+{
+	activeUser : noone,
+	activeTarget : noone,
+	targetSide : -1,
+	targetIndex : 0,
+	targetAll : false,
+	confirmDelay : 0,
+	active : false
+};
+
 // -----------------------------
 // Create Enemies (array-safe)
 // -----------------------------
@@ -119,7 +134,8 @@ function BattleStateSelectAction()
 					}
 					else
 					{
-						array_push(_subMenus[$ _action.subMenu], _action.subMenu, [[_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]]);	
+						array_push(_subMenus[$ _action.subMenu], [_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]);
+
 					}
 				}
 				
