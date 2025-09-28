@@ -72,3 +72,51 @@ for (var i = 0; i < array_length(partyUnits); i++)
 	if (_char.mp <= 0) draw_set_color(c_red);
 	draw_text(x+COLUMN_MP+50,y+170+(i*12),string(_char.mp) + "/" + string(_char.mpMax));
 }
+
+//draw target cursor
+if (cursor.active)
+{
+	with (cursor)
+	{
+		if (activeTarget != noone)
+		{
+			if (!is_array(activeTarget))
+			{
+				draw_sprite(spr_menu_arrow,0,activeTarget.x,activeTarget.y);
+			}
+			else
+			{
+				draw_set_alpha(sin(get_timer()/50000)+1);
+				for (var i = 0; i < array_length(activeTarget); i++)
+				{
+					draw_sprite(spr_menu_arrow,0,activeTarget[i].x,activeTarget[i].y);	
+				}
+				draw_set_alpha(1.0);
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

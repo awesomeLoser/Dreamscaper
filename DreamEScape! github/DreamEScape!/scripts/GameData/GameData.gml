@@ -8,7 +8,7 @@ global.actionLibrary =
 		subMenu : -1,
 		targetRequired : true,
 		targetEnemyByDeafult : true,
-		targetAll : MODE.NEVER,
+		targetAll : MODE.ALWAYS,
 		userAnimation : "attack",
 		effectSprite : sAttackBonk,
 		effectOnTarget : MODE.ALWAYS,
@@ -26,15 +26,19 @@ global.actionLibrary =
 		mpCost : 4,
 		targetRequired : true,
 		targetEnemyByDeafult : true, //0: party/self, 1: enemy
-		targetAll: MODE.NEVER,
+		targetAll: MODE.ALWAYS,
 		userAnimation : "cast",
 		effectSprite : sAttackIce,
 		effectOnTarget: MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
-			var _damage = irandom_range(10,15);
-			BattleChangeHP(_targets[0], -_damage);
-			//BattleChangeMP(_user, -mpCost)
+			for (i = 0; i < array_length(_targets); i++)
+			{
+				var _damage = irandom_range(15,20);
+				if (array_length(_targets) > 1) _damage = ceil(_damage*0.75);
+				BattleChangeHP(_targets[i], -_damage);
+			}
+			BattleChangeMP(_user, -mpCost)
 		}
 	}
 
