@@ -14,6 +14,7 @@ turnCount = 0;
 roundCount = 0;
 battleWaitTimeFrames = 30;
 battleWaitTimeRemaining = 0;
+battleText = "";
 
 currentUser = noone;
 currentAction = -1;
@@ -22,11 +23,15 @@ currentTargets = noone;
 subMenuLevel = 0;
 
 
+
+
+
 //Make targeting cursor
 cursor =
 {
 	activeUser : noone,
 	activeTarget : noone,
+	activeAction : -1,
 	targetSide : -1,
 	targetIndex : 0,
 	targetAll : false,
@@ -34,9 +39,17 @@ cursor =
 	active : false
 };
 
+
+// enemies = global.enemies 
+
+
+//if (enemies != null)
+
 // -----------------------------
 // Create Enemies (array-safe)
 // -----------------------------
+
+
 for (var i = 0; i < array_length(enemies); i++)
 {
     var enemyData = enemies[i]; // already a struct
@@ -134,8 +147,7 @@ function BattleStateSelectAction()
 					}
 					else
 					{
-						array_push(_subMenus[$ _action.subMenu], [_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]);
-
+						array_push(_subMenus[$ _action.subMenu], [_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]); 
 					}
 				}
 				
@@ -171,6 +183,7 @@ function BeginAction(_user, _action, _targets)
     currentUser = _user;
     currentAction = _action;
     currentTargets = _targets;
+	battleText = string_ext(_action.description, [_user.name]);
 
     if (!is_array(currentTargets)) currentTargets = [currentTargets];
 
@@ -256,6 +269,7 @@ function BattleStateVictoryCheck()
 // Turn progression (fixed)
 function BattleStateTurnProgression()
 {
+	battleText = ""; //reset battle text
     turn++;
 
     // Loop back to first unit if needed
