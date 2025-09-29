@@ -1,4 +1,4 @@
-/// @desc Menu - makes a menu, options provided in the form [["name", function, argument], [...]]
+ /// @desc Menu - makes a menu, options provided in the form [["name", function, argument], [...]]
 function Menu(_x,_y, _options, _description = -1, _width = undefined, _height = undefined)
 {
 	with (instance_create_depth(_x,_y,-999999999,oMenu))
@@ -89,9 +89,9 @@ function MenuSelectAction(_user, _action)
 				{
 					targetSide = oBattle.partyUnits;
 					activeTarget = activeUser;
-					var _findSelf = function(_element)
+					var _findSelf = function(_element) 
 					{
-						return (_element == activeTarget);	
+						return (_element == activeTarget)
 					}
 					targetIndex = array_find_index(oBattle.partyUnits, _findSelf);
 				}
