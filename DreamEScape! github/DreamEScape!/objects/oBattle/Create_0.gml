@@ -14,14 +14,42 @@ turnCount = 0;
 roundCount = 0;
 battleWaitTimeFrames = 30;
 battleWaitTimeRemaining = 0;
+battleText = "";
 
 currentUser = noone;
 currentAction = -1;
 currentTargets = noone;
 
+subMenuLevel = 0;
+
+
+
+
+
+//Make targeting cursor
+cursor =
+{
+	activeUser : noone,
+	activeTarget : noone,
+	activeAction : -1,
+	targetSide : -1,
+	targetIndex : 0,
+	targetAll : false,
+	confirmDelay : 0,
+	active : false
+};
+
+
+// enemies = global.enemies 
+
+
+//if (enemies != null)
+
 // -----------------------------
 // Create Enemies (array-safe)
 // -----------------------------
+
+
 for (var i = 0; i < array_length(enemies); i++)
 {
     var enemyData = enemies[i]; // already a struct
@@ -78,34 +106,74 @@ RefreshRenderOrder();
 // Select current unit and begin action
 function BattleStateSelectAction()
 {
-    var _unit = unitTurnOrder[turn];
+		if(!instance_exists(oMenu))
+		{
+		//get current unit
+	    var _unit = unitTurnOrder[turn];
 
-    if (!instance_exists(_unit) || (_unit.hp <= 0))
-    {
-        battleState = BattleStateVictoryCheck;
-        return;
-    }
+	    if (!instance_exists(_unit) || (_unit.hp <= 0))
+	    {
+	        battleState = BattleStateVictoryCheck;
+	        return;
+	    }
 
-    // every unit attacks itself if below code uncommented
-    //BeginAction(_unit.id, global.actionLibrary.attack, _unit.id);
+	    // every unit attacks itself if below code uncommented
+	    //BeginAction(_unit.id, global.actionLibrary.attack, _unit.id);
 	
-	//if unit is player controlled
-	if (_unit.object_index == oBattleUnitPC)
-	{
-		 //attack random enemy (will be changed or removed when options can be selected)
-			  var _action = global.actionLibrary.attack;
-			  var _possibleTargets = array_filter(oBattle.enemyUnits, function(_unit, _index) 
-			  {
-				  return (_unit.hp > 0);
-			  });
-			  var _target = _possibleTargets[irandom(array_length(_possibleTargets)-1)]
-			  BeginAction(_unit.id, _action, _target);
-	}
-	else
-	{
-		//if unit is ai controlled	
-		var _enemyAction = _unit.AIscript();
-		if (_enemyAction != 1) BeginAction(_unit.id, _enemyAction[0], _enemyAction[1])
+		//if unit is player controlled
+		if (_unit.object_index == oBattleUnitPC)
+		{
+			//Compile the action menu
+			var _menuOptions = [];
+			var _subMenus = {};
+			
+			var _actionlist = _unit.actions
+			
+			for (var i = 0; i < array_length(_actionlist); i++)
+			{
+				var _action = _actionlist[i];
+				var _availiable = true; //later we'll check mp cost here (for tutorial series)
+				var _nameAndCount = _action.name; //later we'll  modify the name to include the item count if it's an item
+				if (_action.subMenu == -1)
+				{
+					array_push(_menuOptions, [_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]);
+				}
+				else
+				{
+					//create or add to a submenu
+					if (is_undefined(_subMenus[$ _action.subMenu]))
+					{
+						variable_struct_set(_subMenus, _action.subMenu, [[_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]]);	
+					}
+					else
+					{
+						array_push(_subMenus[$ _action.subMenu], [_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]); 
+					}
+				}
+				
+
+			}
+							//turn submenus into an array
+				var _subMenusArray = variable_struct_get_names(_subMenus);
+				for (var i = 0; i < array_length(_subMenusArray); i++)
+				{
+					//sort submenu if needed
+					//(here)
+					
+					//add back option at the end of each submenu
+					array_push(_subMenus [$ _subMenusArray[i]], ["Back", MenuGoBack, -1, true]);
+					//add submenu into main menu
+					array_push(_menuOptions, [_subMenusArray[i], SubMenu, [_subMenus[$ _subMenusArray[i]]], true]);
+				}
+				
+			Menu(x+10, y+110, _menuOptions, , 74, 60);
+		}
+		else
+		{
+			//if unit is ai controlled	
+			var _enemyAction = _unit.AIscript();
+			if (_enemyAction != 1) BeginAction(_unit.id, _enemyAction[0], _enemyAction[1])
+		}
 	}
 }
 
@@ -115,6 +183,7 @@ function BeginAction(_user, _action, _targets)
     currentUser = _user;
     currentAction = _action;
     currentTargets = _targets;
+	battleText = string_ext(_action.description, [_user.name]);
 
     if (!is_array(currentTargets)) currentTargets = [currentTargets];
 
@@ -169,11 +238,6 @@ function BattleStatePerformAction()
             // Apply the action effect
             currentAction.func(currentUser, currentTargets);
 
-            // Reset currentUser **after action fully completes**
-            currentUser = noone;
-
-            // Progress to next turn
-            battleState = BattleStateTurnProgression;
         }
     }
     else
@@ -182,6 +246,7 @@ function BattleStatePerformAction()
         if (!instance_exists(oBattleEffect))
         {
             battleWaitTimeRemaining--;
+			show_debug_message("Wait: " + string(battleWaitTimeRemaining));
             if (battleWaitTimeRemaining <= 0)
             {
                 currentUser = noone;
@@ -200,6 +265,7 @@ function BattleStateVictoryCheck()
 // Turn progression (fixed)
 function BattleStateTurnProgression()
 {
+	battleText = ""; //reset battle text
     turn++;
 
     // Loop back to first unit if needed
