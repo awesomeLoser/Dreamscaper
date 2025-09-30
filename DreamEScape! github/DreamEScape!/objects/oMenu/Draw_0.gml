@@ -17,7 +17,7 @@ for (l = 0; l < (visibleOptionsMax + - _desc); l++)
 	}
 	else
 	{
-		var _optionToShow = l - _desc + scrollPush;
+		var _optionToShow = l - _desc + _scrollPush;
 		var _str = options[_optionToShow][0];
 		if (hover == _optionToShow - _desc)
 		{
@@ -27,3 +27,5 @@ for (l = 0; l < (visibleOptionsMax + - _desc); l++)
 		draw_text(x + xmargin, y + ymargin + l * heightLine, _str)
 	}
 }
+
+draw_sprite(spr_menu_arrow, 0, x + xmargin + 8, y + ymargin + ((hover - _scrollPush) * heightLine) + 7);
