@@ -238,11 +238,6 @@ function BattleStatePerformAction()
             // Apply the action effect
             currentAction.func(currentUser, currentTargets);
 
-            // Reset currentUser **after action fully completes**
-            currentUser = noone;
-
-            // Progress to next turn
-            battleState = BattleStateTurnProgression;
         }
     }
     else
@@ -251,6 +246,7 @@ function BattleStatePerformAction()
         if (!instance_exists(oBattleEffect))
         {
             battleWaitTimeRemaining--;
+			show_debug_message("Wait: " + string(battleWaitTimeRemaining));
             if (battleWaitTimeRemaining <= 0)
             {
                 currentUser = noone;
