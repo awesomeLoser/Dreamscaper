@@ -1,18 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_Player_Soul",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_Enemy_Bullet_Test",
+  "eventList":[],
   "managed":true,
-  "name":"obj_Player_Soul",
+  "name":"obj_Enemy_Bullet_Test",
   "overriddenProperties":[],
   "parent":{
-    "name":"Fightplayer",
-    "path":"folders/Fightplayer.yy",
+    "name":"Bullets",
+    "path":"folders/Fightplayer/Attacks/Bullets.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_Enemy_Bullet_Parent",
+    "path":"objects/obj_Enemy_Bullet_Parent/obj_Enemy_Bullet_Parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"fire_test",
-    "path":"sprites/fire_test/fire_test.yy",
+    "name":"AttackSprite_1",
+    "path":"sprites/AttackSprite_1/AttackSprite_1.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -1,18 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"obj_Player_Soul",
+  "%Name":"obj_Bullet_Formation_Rain",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_Player_Soul",
+  "name":"obj_Bullet_Formation_Rain",
   "overriddenProperties":[],
   "parent":{
-    "name":"Fightplayer",
-    "path":"folders/Fightplayer.yy",
+    "name":"Bullets",
+    "path":"folders/Fightplayer/Attacks/Bullets.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_Enemy_Bullet_Parent",
+    "path":"objects/obj_Enemy_Bullet_Parent/obj_Enemy_Bullet_Parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,10 +33,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"fire_test",
-    "path":"sprites/fire_test/fire_test.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }
