@@ -143,7 +143,7 @@ else
 	}
 
 //---------------------------flip through pages----------------------------
-if keyboard_check_pressed(ord("X"))
+if keyboard_check_pressed(ord("Z"))
 {
 times_x_pressed += 1;
 

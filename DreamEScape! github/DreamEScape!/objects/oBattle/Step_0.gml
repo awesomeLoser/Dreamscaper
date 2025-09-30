@@ -17,8 +17,8 @@ if (cursor.active)
 		confirmDelay++
 		if (confirmDelay > 1)
 		{
-			_keyConfirm = keyboard_check_pressed(ord("X"));
-			_keyCancel = keyboard_check_pressed(ord("Z"));
+			_keyConfirm = keyboard_check_pressed(ord("Z"));
+			_keyCancel = keyboard_check_pressed(ord("X"));
 			_keyToggle = keyboard_check_pressed(vk_shift);
 
 		}
