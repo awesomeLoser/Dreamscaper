@@ -38,6 +38,7 @@
     {"$GMFolder":"","%Name":"Voices","folderPath":"folders/Sounds/Voices.yy","name":"Voices","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Battle Menu Sprites","folderPath":"folders/Sprites/Battle Menu Sprites.yy","name":"Battle Menu Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"BattleSprites","folderPath":"folders/Sprites/BattleSprites.yy","name":"BattleSprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"test battle sprites","folderPath":"folders/Sprites/test battle sprites.yy","name":"test battle sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Textbox Stuff","folderPath":"folders/Sprites/Textbox Stuff.yy","name":"Textbox Stuff","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Tilly_Walk_Sprirtes","folderPath":"folders/Sprites/Tilly_Walk_Sprirtes.yy","name":"Tilly_Walk_Sprirtes","resourceType":"GMFolder","resourceVersion":"2.0",},
