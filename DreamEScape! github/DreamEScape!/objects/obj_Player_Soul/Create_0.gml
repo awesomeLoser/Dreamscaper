@@ -8,7 +8,7 @@ state = "idle";
 hitBlinkTime = 10;
 hitBlinkTimer = hitBlinkTime;
 
-hitTime = round(1.8*30);
+hitTime = round(1.8*60);
 hitTimer = hitTime;
 
 hitalpha = 0.4;
