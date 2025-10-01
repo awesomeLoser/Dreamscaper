@@ -20,35 +20,37 @@ move_and_collide(move_x, move_y, obj_Wall_Parent);
 //This is our Game Collision
 #region Collision
 
-var collInstances = collision_rectangle(bbox_left,bbox_left,bbox_top,bbox_bottom, obj_Enemy_Bullet_Parent, 0,0 );
+var collInstances = collision_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom, obj_Enemy_Bullet_Parent, 0,0 );
 if( collInstances != noone and state == "idle") {
+	 show_debug_message(collInstances);
  state = "hit";
+
 }
 #endregion
 
 if(state == "hit") {
 	
-hitBlinkTimer--;
-if(hitBlinkTimer<= 0)
-{
+	hitBlinkTimer--;
+	if(hitBlinkTimer<= 0)
+	{
 
-hitBlinkTimer = hitBlinkTime;
-//
-if (image_alpha == 1)
-{
-	image_alpha = hitalpha;
-}
-else {image_alpha = 1; }
-}
+	hitBlinkTimer = hitBlinkTime;
+	//
+	if (image_alpha == 1)
+	{
+		image_alpha = hitalpha;
+	}
+	else {image_alpha = 1; }
+	}
 
-// Invunrability after being hit/and getting hit
-hitTimer--;
-if(hitTimer <= 0){
-hitBlinkTimer = hitBlinkTime;
-image_alpha = 1;
-hitTimer = hitTime;
-state = "idle";
-}
+	// Invunrability after being hit/and getting hit
+	hitTimer--;
+	if(hitTimer <= 0){
+	hitBlinkTimer = hitBlinkTime;
+	image_alpha = 1;
+	hitTimer = hitTime;
+	state = "idle";
+	}
 }
 
 #endregion

@@ -259,6 +259,44 @@ function BattleStatePerformAction()
 // Victory check (unchanged)
 function BattleStateVictoryCheck()
 {
+	RefreshPartyHealthOrder = function()
+	{
+		partyUnitsByHP= []
+		array_copy(partyUnitsByHP,0,partyUnits,0,array_length(partyUnits));
+		array_sort(partyUnitsByHP,function(_1,_2){
+			return _2.hp - _1.hp;
+	});
+}
+RefreshPartyHealthOrder();
+
+RefreshEnemyHealthOrder = function()
+	{
+
+		enemyUnitsByHP= []
+		array_copy(enemyUnitsByHP,0,enemyUnits,0,array_length(enemyUnits));
+		array_sort(enemyUnitsByHP,function(_1,_2){
+			return _2.hp - _1.hp;
+
+	});
+}
+RefreshEnemyHealthOrder()
+
+	if (partyUnitsByHP[0].hp <= 0)
+	{
+		room_goto(rm_title_screen);	
+	}
+	
+	if (enemyUnitsByHP[0].hp <= 0)
+	{
+		for (var i = 0; i < array_length(global.party); i++)
+		{
+			global.party[i].hp = partyUnits[i].hp;	
+		}
+		instance_activate_all();
+		instance_destroy(creator);
+		instance_destroy();
+	}
+	
     battleState = BattleStateTurnProgression;
 }
 

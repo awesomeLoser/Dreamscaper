@@ -150,8 +150,8 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_title_screen","path":"rooms/rm_title_screen/rm_title_screen.yy",},},
-    {"roomId":{"name":"test_room_battles","path":"rooms/test_room_battles/test_room_battles.yy",},},
     {"roomId":{"name":"room_fight","path":"rooms/room_fight/room_fight.yy",},},
+    {"roomId":{"name":"test_room_battles","path":"rooms/test_room_battles/test_room_battles.yy",},},
     {"roomId":{"name":"test_room","path":"rooms/test_room/test_room.yy",},},
     {"roomId":{"name":"rm_test_dialouge_system","path":"rooms/rm_test_dialouge_system/rm_test_dialouge_system.yy",},},
     {"roomId":{"name":"test_room_transitions","path":"rooms/test_room_transitions/test_room_transitions.yy",},},
