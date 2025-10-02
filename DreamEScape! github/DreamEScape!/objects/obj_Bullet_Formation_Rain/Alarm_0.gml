@@ -8,6 +8,7 @@ var  bullet = instance_create_layer(pickX, obj_Action_Box.bbox_top - 20, layer, 
 	image_xscale : 2,
 	image_yscale : 2,
 	
+	
 });
 
 bullet.dmg = bullet_Dmg;
