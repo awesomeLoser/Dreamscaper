@@ -96,7 +96,7 @@ global.party =
 		  tree_test: 
 		 {
 		  name: "Tree_test",	
-		  hp: 30,
+		  hp: 11111111,
 		  hpMax: 30,
 		  mp: 0,
 		  mpMax: 0,
@@ -120,7 +120,7 @@ global.party =
 		 bug_test: 
 		 {
 		  name: "BedBug_test",	
-		  hp: 15,
+		  hp: 1111111,
 		  hpMax: 15,
 		  mp: 0,
 		  mpMax: 0,

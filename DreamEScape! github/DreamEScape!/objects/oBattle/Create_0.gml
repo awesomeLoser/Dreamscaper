@@ -22,56 +22,46 @@ currentTargets = noone;
 
 subMenuLevel = 0;
 
+// Bullet hell control
+bulletHellActive = false;
+firstEnemyThisRound = true;
+bulletTime = 3 * room_speed;
+bulletTimer = bulletTime;
 
-
-
-
-//Make targeting cursor
-cursor =
-{
-	activeUser : noone,
-	activeTarget : noone,
-	activeAction : -1,
-	targetSide : -1,
-	targetIndex : 0,
-	targetAll : false,
-	confirmDelay : 0,
-	active : false
+// Cursor setup
+cursor = {
+    activeUser: noone,
+    activeTarget: noone,
+    activeAction: -1,
+    targetSide: -1,
+    targetIndex: 0,
+    targetAll: false,
+    confirmDelay: 0,
+    active: false
 };
 
-
-// enemies = global.enemies 
-
-
-//if (enemies != null)
-
 // -----------------------------
-// Create Enemies (array-safe)
+// Create enemies
 // -----------------------------
-
-
-for (var i = 0; i < array_length(enemies); i++)
-{
-    var enemyData = enemies[i]; // already a struct
+for (var i = 0; i < array_length(enemies); i++) {
     var inst = instance_create_depth(
-        x + 250 + (i * 10),
-        y + 68 + (i * 20),
+        x + 250 + (i*10),
+        y + 68 + (i*20),
         depth - 10,
         oBattleUnitEnemy,
-        enemyData
+        enemies[i]
     );
     enemyUnits[i] = inst;
     array_push(units, inst);
 }
 
 // -----------------------------
-// Create Party Units
+// Create party units
 // -----------------------------
-for (var i = 0; i < array_length(global.party); i++)
-{
+for (var i = 0; i < array_length(global.party); i++) {
     var inst = instance_create_depth(
-        x + 70 + (i * 10),
-        y + 68 + (i * 15),
+        x + 70 + (i*10),
+        y + 68 + (i*15),
         depth - 10,
         oBattleUnitPC,
         global.party[i]
@@ -81,243 +71,198 @@ for (var i = 0; i < array_length(global.party); i++)
 }
 
 // -----------------------------
-// Shuffle Turn Order
+// Shuffle turn order
 // -----------------------------
 unitTurnOrder = array_shuffle(units);
 
 // -----------------------------
-// Render Order
+// Render order
 // -----------------------------
-RefreshRenderOrder = function()
-{
+RefreshRenderOrder = function() {
     unitRenderOrder = [];
     array_copy(unitRenderOrder, 0, units, 0, array_length(units));
-    array_sort(unitRenderOrder, function(_1, _2)
-    {
-        return _1.y - _2.y;
-    });
-}
+    array_sort(unitRenderOrder, function(a,b){ return a.y - b.y; });
+};
 RefreshRenderOrder();
 
 // -----------------------------
-// Battle States
+// Health order functions
 // -----------------------------
+RefreshPartyHealthOrder = function() {
+    partyUnitsByHP = [];
+    array_copy(partyUnitsByHP, 0, partyUnits, 0, array_length(partyUnits));
+    array_sort(partyUnitsByHP, function(a,b){ return b.hp - a.hp; });
+};
 
-// Select current unit and begin action
-function BattleStateSelectAction()
-{
-		if(!instance_exists(oMenu))
-		{
-		//get current unit
-	    var _unit = unitTurnOrder[turn];
+RefreshEnemyHealthOrder = function() {
+    enemyUnitsByHP = [];
+    array_copy(enemyUnitsByHP, 0, enemyUnits, 0, array_length(enemyUnits));
+    array_sort(enemyUnitsByHP, function(a,b){ return b.hp - a.hp; });
+};
 
-	    if (!instance_exists(_unit) || (_unit.hp <= 0))
-	    {
-	        battleState = BattleStateVictoryCheck;
-	        return;
-	    }
+AreAllEnemiesDead = function() {
+    for (var i=0; i<array_length(enemyUnits); i++)
+        if (instance_exists(enemyUnits[i]) && enemyUnits[i].hp > 0) return false;
+    return true;
+};
 
-	    // every unit attacks itself if below code uncommented
-	    //BeginAction(_unit.id, global.actionLibrary.attack, _unit.id);
-	
-		//if unit is player controlled
-		if (_unit.object_index == oBattleUnitPC)
-		{
-			//Compile the action menu
-			var _menuOptions = [];
-			var _subMenus = {};
-			
-			var _actionlist = _unit.actions
-			
-			for (var i = 0; i < array_length(_actionlist); i++)
-			{
-				var _action = _actionlist[i];
-				var _availiable = true; //later we'll check mp cost here (for tutorial series)
-				var _nameAndCount = _action.name; //later we'll  modify the name to include the item count if it's an item
-				if (_action.subMenu == -1)
-				{
-					array_push(_menuOptions, [_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]);
-				}
-				else
-				{
-					//create or add to a submenu
-					if (is_undefined(_subMenus[$ _action.subMenu]))
-					{
-						variable_struct_set(_subMenus, _action.subMenu, [[_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]]);	
-					}
-					else
-					{
-						array_push(_subMenus[$ _action.subMenu], [_nameAndCount, MenuSelectAction, [_unit, _action], _availiable]); 
-					}
-				}
-				
+// -----------------------------
+// Battle states
+// -----------------------------
+BattleStateSelectAction = function() {
+    if (!instance_exists(oMenu)) {
+        var _unit = unitTurnOrder[turn];
 
-			}
-							//turn submenus into an array
-				var _subMenusArray = variable_struct_get_names(_subMenus);
-				for (var i = 0; i < array_length(_subMenusArray); i++)
-				{
-					//sort submenu if needed
-					//(here)
-					
-					//add back option at the end of each submenu
-					array_push(_subMenus [$ _subMenusArray[i]], ["Back", MenuGoBack, -1, true]);
-					//add submenu into main menu
-					array_push(_menuOptions, [_subMenusArray[i], SubMenu, [_subMenus[$ _subMenusArray[i]]], true]);
-				}
-				
-			Menu(x+10, y+110, _menuOptions, , 74, 60);
-		}
-		else
-		{
-			//if unit is ai controlled	
-			var _enemyAction = _unit.AIscript();
-			if (_enemyAction != 1) BeginAction(_unit.id, _enemyAction[0], _enemyAction[1])
-		}
-	}
+        if (!instance_exists(_unit) || _unit.hp <= 0 || AreAllEnemiesDead()) {
+            battleState = BattleStateVictoryCheck;
+            return;
+        }
+
+        // Player controlled unit
+        if (_unit.object_index == oBattleUnitPC) {
+            var _menuOptions = [];
+            var _subMenus = {};
+            var _actionlist = _unit.actions;
+
+            for (var i=0; i<array_length(_actionlist); i++) {
+                var _action = _actionlist[i];
+                var _available = true;
+                var _name = _action.name;
+
+                if (_action.subMenu == -1) {
+                    array_push(_menuOptions, [_name, MenuSelectAction, [_unit,_action], _available]);
+                } else {
+                    if (is_undefined(_subMenus[$ _action.subMenu]))
+                        variable_struct_set(_subMenus, _action.subMenu, [[_name, MenuSelectAction, [_unit,_action], _available]]);
+                    else
+                        array_push(_subMenus[$ _action.subMenu], [_name, MenuSelectAction, [_unit,_action], _available]);
+                }
+            }
+
+            var _subNames = variable_struct_get_names(_subMenus);
+            for (var i=0; i<array_length(_subNames); i++) {
+                array_push(_subMenus[$ _subNames[i]], ["Back", MenuGoBack, -1, true]);
+                array_push(_menuOptions, [_subNames[i], SubMenu, [_subMenus[$ _subNames[i]]], true]);
+            }
+
+            Menu(x+10, y+110, _menuOptions, undefined, 74, 60);
+        }
+// Enemy unit
+else if (_unit.object_index == oBattleUnitEnemy) {
+    currentUser = _unit; // assign the enemy so it can be processed
+
+    if (firstEnemyThisRound) {
+        // First enemy triggers bullet hell
+        firstEnemyThisRound = false;
+        bulletHellActive = true;
+        bulletTimer = bulletTime;
+
+        // Begin its action normally
+        BeginAction(currentUser, currentUser.actions[0], partyUnits);
+    }
+    else {
+        // Other enemies: skip their turn completely
+        // Do NOT call BeginAction or show attack animation/text
+        battleState = BattleStateTurnProgression;
+        return;
+    }
 }
 
-// Begin the action (animation + target setup)
-function BeginAction(_user, _action, _targets)
-{
+
+    }
+};
+
+BeginAction = function(_user,_action,_targets) {
     currentUser = _user;
     currentAction = _action;
-    currentTargets = _targets;
-	battleText = string_ext(_action.description, [_user.name]);
-
-    if (!is_array(currentTargets)) currentTargets = [currentTargets];
-
+    currentTargets = is_array(_targets) ? _targets : [_targets];
+    battleText = string_ext(_action.description, [_user.name]);
     battleWaitTimeRemaining = battleWaitTimeFrames;
 
-    with (_user)
-    {
+    with (_user) {
         acting = true;
-
-        if (!is_undefined(_action[$ "userAnimation"]) && !is_undefined(_user.sprites[$ _action.userAnimation]))
-        {
+        if (!is_undefined(_action[$ "userAnimation"]) && !is_undefined(_user.sprites[$ _action.userAnimation])) {
             sprite_index = sprites[$ _action.userAnimation];
             image_index = 0;
         }
     }
 
     battleState = BattleStatePerformAction;
-}
+};
 
-// Perform action: animation, effect, damage, then advance turn
-function BattleStatePerformAction()
-{
+BattleStatePerformAction = function() {
     if (!instance_exists(currentUser)) return;
 
-    if (currentUser.acting)
-    {
-        // Wait until animation ends
-        if (currentUser.image_index >= currentUser.image_number - 1)
-        {
-            with (currentUser)
-            {
+    if (currentUser.acting) {
+        if (currentUser.image_index >= currentUser.image_number-1) {
+            with (currentUser) {
                 sprite_index = sprites.idle;
                 image_index = 0;
                 acting = false;
             }
 
-            // Spawn effect if defined
-            if (variable_struct_exists(currentAction, "effectSprite"))
-            {
-                for (var i = 0; i < array_length(currentTargets); i++)
-                {
-                    instance_create_depth(
-                        currentTargets[i].x,
-                        currentTargets[i].y,
-                        currentTargets[i].depth - 1,
-                        oBattleEffect,
-                        {sprite_index: currentAction.effectSprite}
-                    );
+            if (currentUser.object_index == oBattleUnitEnemy) {
+                bulletHellActive = true;
+            } else {
+                if (variable_struct_exists(currentAction, "effectSprite")) {
+                    for (var i=0; i<array_length(currentTargets); i++) {
+                        instance_create_depth(currentTargets[i].x, currentTargets[i].y, currentTargets[i].depth-1, oBattleEffect, {sprite_index: currentAction.effectSprite});
+                    }
                 }
-            }
-
-            // Apply the action effect
-            currentAction.func(currentUser, currentTargets);
-
-        }
-    }
-    else
-    {
-        // Countdown wait time if no animation is running
-        if (!instance_exists(oBattleEffect))
-        {
-            battleWaitTimeRemaining--;
-			show_debug_message("Wait: " + string(battleWaitTimeRemaining));
-            if (battleWaitTimeRemaining <= 0)
-            {
-                currentUser = noone;
-                battleState = BattleStateTurnProgression;
+                currentAction.func(currentUser, currentTargets);
             }
         }
+    } else {
+        // Bullet hell freeze
+        if (currentUser.object_index == oBattleUnitEnemy && bulletHellActive) {
+            bulletTimer--;
+            if (bulletTimer <= 0) bulletHellActive = false;
+            return;
+        }
+
+        // Wait for normal frames
+        battleWaitTimeRemaining--;
+        if (battleWaitTimeRemaining <= 0) {
+            currentUser = noone;
+            battleState = BattleStateTurnProgression;
+        }
     }
-}
+};
 
-// Victory check (unchanged)
-function BattleStateVictoryCheck()
-{
-	RefreshPartyHealthOrder = function()
-	{
-		partyUnitsByHP= []
-		array_copy(partyUnitsByHP,0,partyUnits,0,array_length(partyUnits));
-		array_sort(partyUnitsByHP,function(_1,_2){
-			return _2.hp - _1.hp;
-	});
-}
-RefreshPartyHealthOrder();
-
-RefreshEnemyHealthOrder = function()
-	{
-
-		enemyUnitsByHP= []
-		array_copy(enemyUnitsByHP,0,enemyUnits,0,array_length(enemyUnits));
-		array_sort(enemyUnitsByHP,function(_1,_2){
-			return _2.hp - _1.hp;
-
-	});
-}
-RefreshEnemyHealthOrder()
-
-	if (partyUnitsByHP[0].hp <= 0)
-	{
-		room_goto(rm_title_screen);	
-	}
-	
-	if (enemyUnitsByHP[0].hp <= 0)
-	{
-		for (var i = 0; i < array_length(global.party); i++)
-		{
-			global.party[i].hp = partyUnits[i].hp;	
-		}
-		instance_activate_all();
-		instance_destroy(creator);
-		instance_destroy();
-	}
-	
-    battleState = BattleStateTurnProgression;
-}
-
-// Turn progression (fixed)
-function BattleStateTurnProgression()
-{
-	battleText = ""; //reset battle text
+BattleStateTurnProgression = function() {
+    battleText = "";
     turn++;
-
-    // Loop back to first unit if needed
-    if (turn >= array_length(unitTurnOrder))
-    {
+    if (turn >= array_length(unitTurnOrder)) {
         turn = 0;
         roundCount++;
+        firstEnemyThisRound = true;
+    }
+    battleState = BattleStateSelectAction;
+};
+
+BattleStateVictoryCheck = function() {
+    RefreshPartyHealthOrder();
+    RefreshEnemyHealthOrder();
+
+    if (partyUnitsByHP[0].hp <= 0) {
+        room_goto(rm_title_screen);
     }
 
-    // Pick the next unit to act
-    battleState = BattleStateSelectAction;
-}
+    if (enemyUnitsByHP[0].hp <= 0) {
+        for (var i=0; i<array_length(global.party); i++)
+            global.party[i].hp = partyUnits[i].hp;
 
-// -----------------------------
-// Start the battle
-// -----------------------------
+        instance_activate_all();
+        instance_destroy(creator);
+        instance_destroy();
+    } else {
+        battleState = BattleStateTurnProgression;
+    }
+};
+
+// Initialize state machine
 battleState = BattleStateSelectAction;
+
+// Refresh health at start
+RefreshPartyHealthOrder();
+RefreshEnemyHealthOrder();
