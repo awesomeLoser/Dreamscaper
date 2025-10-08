@@ -9,7 +9,7 @@ pos = 0;
 //pause menu
 option[0, 0] = "room_bullet_fight";
 option[0, 1] = "Dialouge_walk_test";
-option[0, 2] = "test_room_walk_dialouge";
+option[0, 2] = "test_room_rpg_battles";
 
 
 //settings menu

@@ -152,11 +152,11 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"debug_Room","path":"rooms/debug_Room/debug_Room.yy",},},
+    {"roomId":{"name":"test_room_rpg_battles","path":"rooms/test_room_rpg_battles/test_room_rpg_battles.yy",},},
     {"roomId":{"name":"rm_title_screen","path":"rooms/rm_title_screen/rm_title_screen.yy",},},
     {"roomId":{"name":"room_bullet_fight","path":"rooms/room_bullet_fight/room_bullet_fight.yy",},},
     {"roomId":{"name":"test_room_walk_dialouge","path":"rooms/test_room_walk_dialouge/test_room_walk_dialouge.yy",},},
     {"roomId":{"name":"old_rm_test_dialouge_system","path":"rooms/old_rm_test_dialouge_system/old_rm_test_dialouge_system.yy",},},
-    {"roomId":{"name":"test_room_rpg_battles","path":"rooms/test_room_rpg_battles/test_room_rpg_battles.yy",},},
     {"roomId":{"name":"test_room_transitions","path":"rooms/test_room_transitions/test_room_transitions.yy",},},
     {"roomId":{"name":"room_Roam","path":"rooms/room_Roam/room_Roam.yy",},},
   ],
