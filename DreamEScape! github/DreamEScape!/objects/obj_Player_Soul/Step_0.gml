@@ -7,12 +7,18 @@ var up = keyboard_check(vk_up) or keyboard_check( ord(vk_down)) dy+=1
 var down = keyboard_check(vk_down) or keyboard_check( ord(vk_down)) dy-=1;
 
 
-var move_x = (right - left) *2;
-var move_y = (down - up) *2;
+var move_x = (right - left) *4;
+var move_y = (down - up) *4;
 
 x = x +dx * move_x
 y = y + dy * move_y
 move_and_collide(move_x, move_y, obj_Wall_Parent);
+
+//Dash
+//if (keyboard_check(ord("vk_shift")) && keyboard_check(ord("vk_right")))
+//{
+//Code to execute when both keys are pressed
+//}
 
 //Blinking for When player is hit
 #region blinking
