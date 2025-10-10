@@ -156,6 +156,14 @@ else if (_unit.object_index == oBattleUnitEnemy) {
         firstEnemyThisRound = false;
         bulletHellActive = true;
         bulletTimer = bulletTime;
+		box = instance_create_layer(100, 12, "Instances", obj_Action_Box);
+		box.image_xscale = 1;
+		box.image_yscale = 0.8;
+		
+		soul = instance_create_layer(100, 12, "Instances", obj_Player_Soul);
+		soul.image_yscale = 0.3
+		soul.image_xscale = 0.3
+		
 
         // Begin its action normally
         BeginAction(currentUser, currentUser.actions[0], partyUnits);
@@ -216,7 +224,11 @@ BattleStatePerformAction = function() {
         // Bullet hell freeze
         if (currentUser.object_index == oBattleUnitEnemy && bulletHellActive) {
             bulletTimer--;
-            if (bulletTimer <= 0) bulletHellActive = false;
+            if (bulletTimer <= 0) 
+			{
+				bulletHellActive = false;
+				instance_destroy(box);
+			}
             return;
         }
 
