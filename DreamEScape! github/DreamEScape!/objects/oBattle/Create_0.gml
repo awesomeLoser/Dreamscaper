@@ -1,7 +1,10 @@
+
+audio_play_sound(mus_battle,0,true);
 // -----------------------------
 // Battle Setup
 // -----------------------------
 instance_deactivate_all(true);
+instance_create_layer(0,0,"Bullets",obj_battle_trans);
 
 units = [];
 enemyUnits = [];
@@ -25,7 +28,7 @@ subMenuLevel = 0;
 // Bullet hell control
 bulletHellActive = false;
 firstEnemyThisRound = true;
-bulletTime = 3 * room_speed;
+bulletTime = 10 * room_speed;
 bulletTimer = bulletTime;
 
 // Cursor setup
@@ -56,24 +59,36 @@ for (var i = 0; i < array_length(enemies); i++) {
 }
 
 // -----------------------------
-// Create party units
+// Create party units (only 1 member)
 // -----------------------------
-for (var i = 0; i < array_length(global.party); i++) {
+partyUnits = [];
+if (array_length(global.party) > 0) {
     var inst = instance_create_depth(
-        x + 70 + (i*10),
-        y + 68 + (i*15),
-        depth - 10,
-        oBattleUnitPC,
-        global.party[i]
+        x + 70,         // X position
+        y + 68,         // Y position
+        depth - 10,     // Depth
+        oBattleUnitPC,  // Object
+        global.party[0] // Data struct
     );
-    partyUnits[i] = inst;
+    array_push(partyUnits, inst); // ✅ push, do NOT assign to index 0
     array_push(units, inst);
 }
 
 // -----------------------------
-// Shuffle turn order
+// Shuffle turn order safely
 // -----------------------------
-unitTurnOrder = array_shuffle(units);
+var shuffledParty = array_shuffle(partyUnits);
+var shuffledEnemies = array_shuffle(enemyUnits);
+
+// manually combine
+unitTurnOrder = [];
+for (var i = 0; i < array_length(shuffledParty); i++) array_push(unitTurnOrder, shuffledParty[i]);
+for (var i = 0; i < array_length(shuffledEnemies); i++) array_push(unitTurnOrder, shuffledEnemies[i]);
+
+
+
+	
+
 
 // -----------------------------
 // Render order
@@ -156,14 +171,17 @@ else if (_unit.object_index == oBattleUnitEnemy) {
         firstEnemyThisRound = false;
         bulletHellActive = true;
         bulletTimer = bulletTime;
-		box = instance_create_layer(100, 12, "Instances", obj_Action_Box);
-		box.image_xscale = 1;
-		box.image_yscale = 0.8;
+				
 		
-		soul = instance_create_layer(100, 12, "Instances", obj_Player_Soul);
+		attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
+				
+		soul = instance_create_layer(120, 80, "soul", obj_Player_Soul);
 		soul.image_yscale = 0.3
 		soul.image_xscale = 0.3
 		
+		global.box = instance_create_layer(100, 12, "soul", obj_Action_Box);
+		global.box.image_xscale = 1;
+		global.box.image_yscale = 0.8;
 
         // Begin its action normally
         BeginAction(currentUser, currentUser.actions[0], partyUnits);
@@ -221,16 +239,46 @@ BattleStatePerformAction = function() {
             }
         }
     } else {
-        // Bullet hell freeze
-        if (currentUser.object_index == oBattleUnitEnemy && bulletHellActive) {
-            bulletTimer--;
-            if (bulletTimer <= 0) 
-			{
-				bulletHellActive = false;
-				instance_destroy(box);
-			}
-            return;
-        }
+// Bullet hell freeze
+if (currentUser.object_index == oBattleUnitEnemy && bulletHellActive) {
+    bulletTimer--;
+
+    // Only end bullet hell when timer runs out
+    if (bulletTimer <= 0) {
+        bulletHellActive = false;
+
+        // Stop bullet spawner
+		if (instance_exists(attack)) {
+		    for (var i = 0; i < 12; i++) attack.alarm[i] = -1; // stop any pending alarms
+		    instance_destroy(attack);
+		}
+
+
+        // Destroy box and soul
+        if (instance_exists(global.box)) instance_destroy(global.box);
+        if (instance_exists(soul)) instance_destroy(soul);
+
+		with (all) {
+    if (variable_instance_exists(id, "is_bullet") && is_bullet) {
+        instance_destroy();
+    }
+}
+
+
+
+        // Proceed to next battle state
+        currentUser = noone;
+        battleState = BattleStateTurnProgression;
+
+        // Exit step early
+        return;
+    }
+
+    // If timer > 0, just freeze the rest
+    return;
+}
+
+
 
         // Wait for normal frames
         battleWaitTimeRemaining--;
@@ -258,12 +306,14 @@ BattleStateVictoryCheck = function() {
 
     if (partyUnitsByHP[0].hp <= 0) {
         room_goto(rm_title_screen);
+		audio_stop_all();
     }
 
     if (enemyUnitsByHP[0].hp <= 0) {
         for (var i=0; i<array_length(global.party); i++)
             global.party[i].hp = partyUnits[i].hp;
-
+			
+        audio_stop_all();
         instance_activate_all();
         instance_destroy(creator);
         instance_destroy();
