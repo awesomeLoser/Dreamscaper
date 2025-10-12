@@ -7,8 +7,8 @@ var up = keyboard_check(vk_up) or keyboard_check( ord(vk_down)) dy+=1
 var down = keyboard_check(vk_down) or keyboard_check( ord(vk_down)) dy-=1;
 
 
-var move_x = (right - left) *4;
-var move_y = (down - up) *4;
+var move_x = (right - left) *1.5;
+var move_y = (down - up) *1.5;
 
 x = x +dx * move_x
 y = y + dy * move_y

@@ -1,5 +1,7 @@
+
 //run state machine (???)
 battleState();
+
 
 //Cursor control
 if (cursor.active)

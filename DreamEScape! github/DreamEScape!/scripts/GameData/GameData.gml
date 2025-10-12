@@ -62,21 +62,9 @@ global.actionLibrary =
 global.party =
 [
 
+	
 	{
 	 name: "test_char",
-	 hp: 89,
-	 hpMax: 89,
-	 mp: 10,
-	 mpMax: 15,
-	 strength: 16,
-	 sprites: {idle: test_battle_idle, attack: test_battle_attack, defend: test_battle_defend, down: test_battle_down, cast: test_battle_cast},
-	 actions: [global.actionLibrary.attack],
-	 
-
-	}
-	,
-	{
-	 name: "test_char_2",
 	 hp: 89,
 	 hpMax: 89,
 	 mp: 10,
@@ -96,8 +84,8 @@ global.party =
 		  tree_test: 
 		 {
 		  name: "Tree_test",	
-		  hp: 11111111,
-		  hpMax: 30,
+		  hp: 20,
+		  hpMax: 20,
 		  mp: 0,
 		  mpMax: 0,
 		  strength: 5,
@@ -120,7 +108,7 @@ global.party =
 		 bug_test: 
 		 {
 		  name: "BedBug_test",	
-		  hp: 1111111,
+		  hp: 20,
 		  hpMax: 15,
 		  mp: 0,
 		  mpMax: 0,
