@@ -163,48 +163,40 @@ BattleStateSelectAction = function() {
             Menu(x+10, y+110, _menuOptions, undefined, 74, 60);
         }
 // Enemy unit
-else if (_unit.object_index == oBattleUnitEnemy) {
-    currentUser = _unit; // assign the enemy so it can be processed
+else if (_unit.object_index == oBattleUnitEnemy) 
+{
+    currentUser = _unit;
 
-    if (firstEnemyThisRound) {
-        // First enemy triggers bullet hell
+    // Always generate valid targets for enemies
+    var _enemyTargets = array_filter(partyUnits, function(_unit, _index) {
+        return (_unit.hp > 0);
+    });
+
+    if (firstEnemyThisRound) 
+    {
         firstEnemyThisRound = false;
         bulletHellActive = true;
         bulletTimer = bulletTime;
-				
-		// Spawn bullet pattern based on enemy key
-    switch (currentUser.enemyKey) {
-        case "tree_test":
-            attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
-            break;
-        case "bug_test":
-           attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
-            break;
-        default:
-            attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
-            break;
-    }
 
+        // Spawn bullet pattern using the new dedicated function
+        attack = instance_create_layer(100, 12, "soul", DecideBulletPattern());
 
-				
-		soul = instance_create_layer(120, 80, "soul", obj_Player_Soul);
-		soul.image_yscale = 0.3
-		soul.image_xscale = 0.3
-		
-		global.box = instance_create_layer(100, 12, "soul", obj_Action_Box);
-		global.box.image_xscale = 1;
-		global.box.image_yscale = 0.8;
+        soul = instance_create_layer(120, 80, "soul", obj_Player_Soul);
+        soul.image_yscale = 0.3;
+        soul.image_xscale = 0.3;
 
-        // Begin its action normally
-        BeginAction(currentUser, currentUser.actions[0], partyUnits);
-    }
-    else {
-        // Other enemies: skip their turn completely
-        // Do NOT call BeginAction or show attack animation/text
-        battleState = BattleStateTurnProgression;
-        return;
+        global.box = instance_create_layer(100, 12, "soul", obj_Action_Box);
+        global.box.image_xscale = 1;
+        global.box.image_yscale = 0.8;
+
+        BeginAction(currentUser, currentUser.actions[0], _enemyTargets);
+    } 
+    else 
+    {
+        BeginAction(currentUser, currentUser.actions[0], _enemyTargets);
     }
 }
+
 
 
     }
