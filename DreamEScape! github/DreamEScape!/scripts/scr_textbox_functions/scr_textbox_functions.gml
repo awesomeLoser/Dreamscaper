@@ -117,7 +117,7 @@ function scr_text(_text){
 				
 				//metamorphosis
 				case "metamorphosis":
-				speaker_sprite[page_number] = spr_speak_j_re_t;
+				speaker_sprite[page_number] = spr_speak_ephi;
 				txtb_spr[page_number] = spr_textbox_eyes
 				snd[page_number] = snd_voice_oh;
 				break;
@@ -156,7 +156,7 @@ function scr_option(_option, _link_id)
 /// @param text_id
 function create_textbox(_text_id) 
 {
-		with ( instance_create_depth(0, 0, -9999999, obj_textbox) ) 
+		with ( instance_create_depth(0, 0, -999, obj_textbox) ) 
 	{
       scr_game_text(_text_id);
 	}

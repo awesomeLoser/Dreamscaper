@@ -1,1 +1,1 @@
-text_id = "loop";
+text_id = "first_talk";

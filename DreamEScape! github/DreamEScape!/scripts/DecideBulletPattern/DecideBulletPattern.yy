@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DecideBulletPattern",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DecideBulletPattern",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

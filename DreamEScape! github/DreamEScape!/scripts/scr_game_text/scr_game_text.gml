@@ -61,10 +61,22 @@ function scr_game_text(_text_id){
 
         break;
 		
-			  	case "loop": 
+	case "loop": 
 	scr_text("~~~~~~ is tilde")
 
 	break;
+	
+	case "first_talk": 
+	scr_text("wow nice to meet u for the first time!!")
+	inst_73D19CCE.text_id = "second_talk";
+
+	break;
+	
+	case "second_talk": 
+	scr_text("ugh you again go away")
+
+	break;
+		
 		
 	}
 }
