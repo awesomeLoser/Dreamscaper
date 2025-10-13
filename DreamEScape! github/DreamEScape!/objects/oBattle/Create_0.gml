@@ -172,8 +172,20 @@ else if (_unit.object_index == oBattleUnitEnemy) {
         bulletHellActive = true;
         bulletTimer = bulletTime;
 				
-		
-		attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
+		// Spawn bullet pattern based on enemy key
+    switch (currentUser.enemyKey) {
+        case "tree_test":
+            attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
+            break;
+        case "bug_test":
+           attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
+            break;
+        default:
+            attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
+            break;
+    }
+
+
 				
 		soul = instance_create_layer(120, 80, "soul", obj_Player_Soul);
 		soul.image_yscale = 0.3
@@ -235,7 +247,8 @@ BattleStatePerformAction = function() {
                         instance_create_depth(currentTargets[i].x, currentTargets[i].y, currentTargets[i].depth-1, oBattleEffect, {sprite_index: currentAction.effectSprite});
                     }
                 }
-                currentAction.func(currentUser, currentTargets);
+       
+;
             }
         }
     } else {
