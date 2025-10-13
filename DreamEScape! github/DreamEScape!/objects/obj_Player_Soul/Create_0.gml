@@ -1,4 +1,5 @@
-
+is_hit = false;
+damage = 0;
 state = "idle";
 
 //hp = 100;
