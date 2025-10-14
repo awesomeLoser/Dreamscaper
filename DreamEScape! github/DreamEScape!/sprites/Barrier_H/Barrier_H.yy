@@ -44,8 +44,8 @@
   },
   "origin":3,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"BoxSprites",
+    "path":"folders/Sprites/BoxSprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

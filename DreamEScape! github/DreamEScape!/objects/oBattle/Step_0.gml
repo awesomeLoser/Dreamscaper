@@ -1,125 +1,92 @@
-//run state machine (???)
+// Run state machine (???)
 battleState();
 
-//Cursor control
-if (cursor.active)
-{
-	with (cursor)
-	{
-		//input
-		var _keyUp = keyboard_check_pressed(vk_up);
-		var _keyDown = keyboard_check_pressed(vk_down);
-		var _keyLeft = keyboard_check_pressed(vk_left);
-		var _keyRight = keyboard_check_pressed(vk_right);
-		var _keyToggle = false;
-		var _keyConfirm = false;
-		var _keyCancel = false;
-		confirmDelay++
-		if (confirmDelay > 1)
-		{
-			_keyConfirm = keyboard_check_pressed(ord("X"));
-			_keyCancel = keyboard_check_pressed(ord("Z"));
-			_keyToggle = keyboard_check_pressed(vk_shift);
+// Cursor control
+if (cursor.active) {
+    with (cursor) {
+        // Input
+        var _keyUp = keyboard_check_pressed(vk_up);
+        var _keyDown = keyboard_check_pressed(vk_down);
+        var _keyLeft = keyboard_check_pressed(vk_left);
+        var _keyRight = keyboard_check_pressed(vk_right);
+        var _keyToggle = false;
+        var _keyConfirm = false;
+        var _keyCancel = false;
 
-		}
-		var _moveH = _keyRight - _keyLeft;
-		var _moveV = _keyDown - _keyUp;
-		
+        confirmDelay++;
+        if (confirmDelay > 1) {
+            _keyConfirm = keyboard_check_pressed(ord("Z"));
+            _keyCancel = keyboard_check_pressed(ord("X"));
+            _keyToggle = keyboard_check_pressed(vk_shift);
+        }
 
-		if ( _moveH == -1) targetSide = oBattle.partyUnits;
-		if ( _moveH == 1) targetSide = oBattle.enemyUnits;
+        var _moveH = _keyRight - _keyLeft;
+        var _moveV = _keyDown - _keyUp;
 
-		
-		//Verify Target List
-		if (targetSide == oBattle.enemyUnits)
-		{
+        // Assuming targetSide is a string or enum indicating side: "party" or "enemy"
+        if (_moveH == -1) targetSide = "party";
+        if (_moveH == 1) targetSide = "enemy";
 
-			targetSide = array_filter(targetSide, function(_element, _index)
-			{
-				return _element.hp > 0;
+        // Assign targetSide array based on selected side
+        var targetArray = [];
+        if (targetSide == "enemy") {
+            targetArray = array_filter(oBattle.enemyUnits, function(_element, _index) {
+                return _element.hp > 0;
+            });
+        } else if (targetSide == "party") {
+            targetArray = array_filter(oBattle.partyUnits, function(_element, _index) {
+                return _element.hp > 0;
+            });
+        }
 
-			});
-		}
+        // Move between targets
+        if (targetAll == false) {  // single target mode
+            if (_moveV == 1) targetIndex++;
+            if (_moveV == -1) targetIndex--;
 
+            // Wrap around
+            var _targets = array_length(targetArray);
+            if (targetIndex < 0) targetIndex = _targets - 1;
+            if (targetIndex >= _targets) targetIndex = 0;
 
-		//move between targets
-		//show_debug_message("trapes")
-		
-		
-		
-		
-		
-		
-		if (targetAll == true) // single target mode
-		{
-			
-			if (_moveV == 1) targetIndex++;
-			if (_moveV == -1) targetIndex--;
-			//show_debug_message("IM Old!")
-			
-			//wrap
-			var _targets = array_length(targetSide);
-			if (targetIndex < 0) targetIndex = _targets - 1;
-			if (targetIndex > (_targets - 1)) targetIndex = 0;
-			//show_debug_message("I Loled!")
-			
-			//identify target
-			activeTarget = targetSide[targetIndex];
-			//show_debug_message("crazy i was vtrazu omne")
-			
-			//toggle all mode
-			if (activeAction.targetAll == MODE.VARIES) && (_keyToggle) // switch to all mode
-			{
-				targetAll = true;	
-				show_debug_message("IM droll!")
-			}
-		}
-			else //target all mode
-			{
-				activeTarget = targetSide;
-				if (activeAction.targetAll == MODE.VARIES) && (_keyToggle) //switch to single mode
-				{
-					targetAll = false;	
-						show_debug_message("bannana")
-				}
-			}
-			
-			//confirm action
-			if (_keyConfirm)
-			{
-				//show_debug_message("vjhdgsd")
-				with (oBattle) BeginAction(cursor.activeUser, cursor.activeAction, cursor.activeTarget);
-				with (oMenu) instance_destroy();
-				active = false;
-				confirmDelay = 0;
-			}
-			
-			//cancel and return to menu
-			if (_keyCancel) && (!_keyConfirm)
-			{
-				with (oMenu) active = true;
-				active = false;
-				confirmDelay = 0;
-			}
+            // Identify target
+            activeTarget = targetArray[targetIndex];
+
+            // Toggle all mode
+            if ((activeAction.targetAll == MODE.VARIES) && (_keyToggle)) {
+                targetAll = true;    
+                show_debug_message("Switched to all-target mode");
+            }
+        } else {  // target all mode
+            activeTarget = targetArray;
+
+            // Toggle single mode
+            if ((activeAction.targetAll == MODE.VARIES) && (_keyToggle)) {
+                targetAll = false;    
+                show_debug_message("Switched to single-target mode");
+            }
+        }
+
+        // Confirm action
+        if (_keyConfirm) {
+            with (oBattle) BeginAction(cursor.activeUser, cursor.activeAction, cursor.activeTarget);
+            with (oMenu) instance_destroy();
+            active = false;
+            confirmDelay = 0;
+        }
+
+        // Cancel and return to menu
+        if ((_keyCancel) && (!_keyConfirm)) {
+            with (oMenu) active = true;
+            active = false;
+            confirmDelay = 0;
+        }
+    }
+}
 
 		
-	}
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}
+
 

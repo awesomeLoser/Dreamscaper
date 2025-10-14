@@ -1,7 +1,7 @@
 //get inputs
 var up_key = keyboard_check_pressed(vk_up);
 var down_key = keyboard_check_pressed(vk_down);
-var accept_key = keyboard_check_pressed(ord("X"));
+var accept_key = keyboard_check_pressed(ord("Z"));
 
 //store number of options in current menu
 op_length = array_length(option[menu_level]);
