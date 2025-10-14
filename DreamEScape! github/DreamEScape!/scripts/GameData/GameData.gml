@@ -17,15 +17,19 @@ global.actionLibrary =
 		subMenu : -1,
 		targetRequired : true,
 		targetEnemyByDeafult : true,
-		targetAll : MODE.ALWAYS,
+		targetAll : MODE.NEVER,
 		userAnimation : "attack",
 		effectSprite : sAttackBonk,
 		effectOnTarget : MODE.ALWAYS,
 		func : function(_user, _targets)
 		{
+		show_debug_message("Attack happened");
 		 var _damage = ceil(_user.strength + random_range(-_user.strength * 0.25, _user.strength * 0.25));
 		 BattleChangeHP(_targets[0], -_damage, 0);
+		  show_debug_message(_user.name + " dealt " + string(_damage) + " damage to " + _targets[0].name);
 		 show_debug_message("Targets length: " + string(array_length(_targets)));
+
+
 if (array_length(_targets) > 0) {
     show_debug_message("First target hp: " + string(_targets[0].hp));
 }
@@ -89,8 +93,8 @@ global.party =
     {
         enemyKey: "tree_test",   // Added this key
         name: "Tree_test",    
-        hp: 20,
-        hpMax: 20,
+        hp: 18,
+        hpMax: 18,
         mp: 0,
         mpMax: 0,
         strength: 5,

@@ -1,5 +1,5 @@
 
-audio_play_sound(mus_battle,0,true);
+//audio_play_sound(mus_battle,0,true);
 // -----------------------------
 // Battle Setup
 // -----------------------------
@@ -28,7 +28,7 @@ subMenuLevel = 0;
 // Bullet hell control
 bulletHellActive = false;
 firstEnemyThisRound = true;
-bulletTime = 3 * room_speed;
+bulletTime = 1 * room_speed;
 bulletTimer = bulletTime;
 
 // Cursor setup
@@ -210,7 +210,7 @@ else if (_unit.object_index == oBattleUnitEnemy) {
     }
 };
 
-BeginAction = function(_user,_action,_targets) {
+function BeginAction(_user,_action,_targets) {
     currentUser = _user;
     currentAction = _action;
     currentTargets = is_array(_targets) ? _targets : [_targets];
@@ -232,6 +232,7 @@ BattleStatePerformAction = function() {
     if (!instance_exists(currentUser)) return;
 
     if (currentUser.acting) {
+		
         if (currentUser.image_index >= currentUser.image_number-1) {
             with (currentUser) {
                 sprite_index = sprites.idle;
@@ -242,6 +243,8 @@ BattleStatePerformAction = function() {
             if (currentUser.object_index == oBattleUnitEnemy) {
                 bulletHellActive = true;
             } else {
+				currentAction.func(currentUser, currentTargets);
+
                 if (variable_struct_exists(currentAction, "effectSprite")) {
                     for (var i=0; i<array_length(currentTargets); i++) {
                         instance_create_depth(currentTargets[i].x, currentTargets[i].y, currentTargets[i].depth-1, oBattleEffect, {sprite_index: currentAction.effectSprite});
