@@ -1,4 +1,13 @@
 //Action Library (the stuff people can do in battle)
+
+enum MODE 
+{
+	NEVER = 0,
+	ALWAYS = 1,
+	VARIES = 2
+}
+
+
 global.actionLibrary =
 {
 	attack:
@@ -38,19 +47,13 @@ global.actionLibrary =
 				if (array_length(_targets) > 1) _damage = ceil(_damage*0.75);
 				BattleChangeHP(_targets[i], -_damage);
 			}
-			BattleChangeMP(_user, -mpCost)
+			//BattleChangeMP(_user, -mpCost)
 		}
 	}
 
 
 }
 
-enum MODE 
-{
-	NEVER = 0,
-	ALWAYS = 1,
-	VARIES = 2
-}
 
 
 
