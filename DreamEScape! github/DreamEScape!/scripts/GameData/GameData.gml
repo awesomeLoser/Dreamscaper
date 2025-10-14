@@ -10,6 +10,62 @@ enum MODE
 
 global.actionLibrary =
 {
+ Charlie
+	attack:
+	{
+		name : "Attack",
+		description : "{0} Attacks!",
+		subMenu : -1,
+		targetRequired : true,
+		targetEnemyByDeafult : true,
+		targetAll : MODE.NEVER,
+		userAnimation : "attack",
+		effectSprite : sAttackBonk,
+		effectOnTarget : MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+		show_debug_message("Attack happened");
+		 var _damage = ceil(_user.strength + random_range(-_user.strength * 0.25, _user.strength * 0.25));
+		 BattleChangeHP(_targets[0], -_damage, 0);
+		  show_debug_message(_user.name + " dealt " + string(_damage) + " damage to " + _targets[0].name);
+		 show_debug_message("Targets length: " + string(array_length(_targets)));
+
+
+if (array_length(_targets) > 0) {
+    show_debug_message("First target hp: " + string(_targets[0].hp));
+}
+else {
+    show_debug_message("No valid targets!");
+}
+
+		}
+	},
+	ice:
+	{
+		name : "Ice",
+		description : "{0} casts Ice!",
+		subMenu : "Magic",
+		mpCost : 4,
+		targetRequired : true,
+		targetEnemyByDeafult : true, //0: party/self, 1: enemy
+		targetAll: MODE.ALWAYS,
+		userAnimation : "cast",
+		effectSprite : sAttackIce,
+		effectOnTarget: MODE.ALWAYS,
+		func : function(_user, _targets)
+		{
+			for (i = 0; i < array_length(_targets); i++)
+			{
+				var _damage = irandom_range(15,20);
+				if (array_length(_targets) > 1) _damage = ceil(_damage*0.75);
+				BattleChangeHP(_targets[i], -_damage);
+			}
+			//BattleChangeMP(_user, -mpCost)
+		}
+	}
+
+
+=======
     attack:
     {
         name : "Attack",
@@ -49,6 +105,7 @@ global.actionLibrary =
             }
         }
     }
+ main
 }
 
 // -----------------------------
@@ -75,10 +132,17 @@ global.enemies =
 {
     tree_test:
     {
+
+        enemyKey: "tree_test",   // Added this key
+        name: "Tree_test",    
+        hp: 18,
+        hpMax: 18,
+
         enemyKey: "tree_test",
         name: "Tree_test",
         hp: 20,
         hpMax: 20,
+
         mp: 0,
         mpMax: 0,
         strength: 5,

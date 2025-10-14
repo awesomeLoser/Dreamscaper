@@ -1,8 +1,9 @@
-// -----------------------------
-// Audio
-// -----------------------------
-audio_play_sound(mus_battle,0,true);
+
+
+//audio_play_sound(mus_battle,0,true);
+
 battleState = BattleStateSelectAction;
+
 // -----------------------------
 // Battle Setup
 // -----------------------------
@@ -33,7 +34,7 @@ subMenuLevel = 0;
 // -----------------------------
 bulletHellActive = false;
 firstEnemyThisRound = true;
-bulletTime = 3 * room_speed;
+bulletTime = 1 * room_speed;
 bulletTimer = bulletTime;
 
 // -----------------------------
@@ -200,9 +201,18 @@ BattleStateSelectAction = function() {
                 soul.image_yscale = 0.3;
                 soul.image_xscale = 0.3;
 
+
+function BeginAction(_user,_action,_targets) {
+    currentUser = _user;
+    currentAction = _action;
+    currentTargets = is_array(_targets) ? _targets : [_targets];
+    battleText = string_ext(_action.description, [_user.name]);
+    battleWaitTimeRemaining = battleWaitTimeFrames;
+
                 global.box = instance_create_layer(100, 12, "soul", obj_Action_Box);
                 global.box.image_xscale = 1;
                 global.box.image_yscale = 0.8;
+
 
                 BeginAction(currentUser, currentUser.actions[0], _enemyTargets);
             } else {
@@ -216,6 +226,7 @@ BattleStatePerformAction = function() {
     if (!instance_exists(currentUser)) return;
 
     if (currentUser.acting) {
+		
         if (currentUser.image_index >= currentUser.image_number-1) {
             with (currentUser) {
                 sprite_index = sprites.idle;
@@ -226,6 +237,8 @@ BattleStatePerformAction = function() {
             if (currentUser.object_index == oBattleUnitEnemy) {
                 bulletHellActive = true;
             } else {
+				currentAction.func(currentUser, currentTargets);
+
                 if (variable_struct_exists(currentAction, "effectSprite")) {
                     for (var i=0; i<array_length(currentTargets); i++) {
                         instance_create_depth(currentTargets[i].x, currentTargets[i].y, currentTargets[i].depth-1, oBattleEffect, {sprite_index: currentAction.effectSprite});
