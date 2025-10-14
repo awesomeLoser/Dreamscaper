@@ -1,5 +1,9 @@
 
+
 //audio_play_sound(mus_battle,0,true);
+
+battleState = BattleStateSelectAction;
+
 // -----------------------------
 // Battle Setup
 // -----------------------------
@@ -25,13 +29,17 @@ currentTargets = noone;
 
 subMenuLevel = 0;
 
+// -----------------------------
 // Bullet hell control
+// -----------------------------
 bulletHellActive = false;
 firstEnemyThisRound = true;
 bulletTime = 1 * room_speed;
 bulletTimer = bulletTime;
 
+// -----------------------------
 // Cursor setup
+// -----------------------------
 cursor = {
     activeUser: noone,
     activeTarget: noone,
@@ -59,36 +67,30 @@ for (var i = 0; i < array_length(enemies); i++) {
 }
 
 // -----------------------------
-// Create party units (only 1 member)
+// Create party units (1 member)
 // -----------------------------
 partyUnits = [];
 if (array_length(global.party) > 0) {
     var inst = instance_create_depth(
-        x + 70,         // X position
-        y + 68,         // Y position
-        depth - 10,     // Depth
-        oBattleUnitPC,  // Object
-        global.party[0] // Data struct
+        x + 70,
+        y + 68,
+        depth - 10,
+        oBattleUnitPC,
+        global.party[0]
     );
-    array_push(partyUnits, inst); // ✅ push, do NOT assign to index 0
+    array_push(partyUnits, inst);
     array_push(units, inst);
 }
 
 // -----------------------------
-// Shuffle turn order safely
+// Shuffle turn order
 // -----------------------------
 var shuffledParty = array_shuffle(partyUnits);
 var shuffledEnemies = array_shuffle(enemyUnits);
 
-// manually combine
 unitTurnOrder = [];
 for (var i = 0; i < array_length(shuffledParty); i++) array_push(unitTurnOrder, shuffledParty[i]);
 for (var i = 0; i < array_length(shuffledEnemies); i++) array_push(unitTurnOrder, shuffledEnemies[i]);
-
-
-
-	
-
 
 // -----------------------------
 // Render order
@@ -122,7 +124,28 @@ AreAllEnemiesDead = function() {
 };
 
 // -----------------------------
-// Battle states
+// BeginAction
+// -----------------------------
+BeginAction = function(_user,_action,_targets) {
+    currentUser = _user;
+    currentAction = _action;
+    currentTargets = is_array(_targets) ? _targets : [_targets];
+    battleText = string_ext(_action.description, [_user.name]);
+    battleWaitTimeRemaining = battleWaitTimeFrames;
+
+    with (_user) {
+        acting = true;
+        if (!is_undefined(_action[$ "userAnimation"]) && !is_undefined(_user.sprites[$ _action.userAnimation])) {
+            sprite_index = sprites[$ _action.userAnimation];
+            image_index = 0;
+        }
+    }
+
+    battleState = BattleStatePerformAction;
+};
+
+// -----------------------------
+// Battle States
 // -----------------------------
 BattleStateSelectAction = function() {
     if (!instance_exists(oMenu)) {
@@ -133,7 +156,7 @@ BattleStateSelectAction = function() {
             return;
         }
 
-        // Player controlled unit
+        // Player unit
         if (_unit.object_index == oBattleUnitPC) {
             var _menuOptions = [];
             var _subMenus = {};
@@ -162,53 +185,22 @@ BattleStateSelectAction = function() {
 
             Menu(x+10, y+110, _menuOptions, undefined, 74, 60);
         }
-// Enemy unit
-else if (_unit.object_index == oBattleUnitEnemy) {
-    currentUser = _unit; // assign the enemy so it can be processed
+        // Enemy unit
+        else if (_unit.object_index == oBattleUnitEnemy) {
+            currentUser = _unit;
 
-    if (firstEnemyThisRound) {
-        // First enemy triggers bullet hell
-        firstEnemyThisRound = false;
-        bulletHellActive = true;
-        bulletTimer = bulletTime;
-				
-		// Spawn bullet pattern based on enemy key
-    switch (currentUser.enemyKey) {
-        case "tree_test":
-            attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
-            break;
-        case "bug_test":
-           attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
-            break;
-        default:
-            attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
-            break;
-    }
+            var _enemyTargets = array_filter(partyUnits, function(_unit,_index){ return _unit.hp > 0; });
 
+            if (firstEnemyThisRound) {
+                firstEnemyThisRound = false;
+                bulletHellActive = true;
+                bulletTimer = bulletTime;
 
-				
-		soul = instance_create_layer(120, 80, "soul", obj_Player_Soul);
-		soul.image_yscale = 0.3
-		soul.image_xscale = 0.3
-		
-		global.box = instance_create_layer(100, 12, "soul", obj_Action_Box);
-		global.box.image_xscale = 1;
-		global.box.image_yscale = 0.8;
+                attack = instance_create_layer(100, 12, "soul", DecideBulletPattern());
+                soul = instance_create_layer(120, 80, "soul", obj_Player_Soul);
+                soul.image_yscale = 0.3;
+                soul.image_xscale = 0.3;
 
-        // Begin its action normally
-        BeginAction(currentUser, currentUser.actions[0], partyUnits);
-    }
-    else {
-        // Other enemies: skip their turn completely
-        // Do NOT call BeginAction or show attack animation/text
-        battleState = BattleStateTurnProgression;
-        return;
-    }
-}
-
-
-    }
-};
 
 function BeginAction(_user,_action,_targets) {
     currentUser = _user;
@@ -217,15 +209,17 @@ function BeginAction(_user,_action,_targets) {
     battleText = string_ext(_action.description, [_user.name]);
     battleWaitTimeRemaining = battleWaitTimeFrames;
 
-    with (_user) {
-        acting = true;
-        if (!is_undefined(_action[$ "userAnimation"]) && !is_undefined(_user.sprites[$ _action.userAnimation])) {
-            sprite_index = sprites[$ _action.userAnimation];
-            image_index = 0;
+                global.box = instance_create_layer(100, 12, "soul", obj_Action_Box);
+                global.box.image_xscale = 1;
+                global.box.image_yscale = 0.8;
+
+
+                BeginAction(currentUser, currentUser.actions[0], _enemyTargets);
+            } else {
+                BeginAction(currentUser, currentUser.actions[0], _enemyTargets);
+            }
         }
     }
-
-    battleState = BattleStatePerformAction;
 };
 
 BattleStatePerformAction = function() {
@@ -250,53 +244,34 @@ BattleStatePerformAction = function() {
                         instance_create_depth(currentTargets[i].x, currentTargets[i].y, currentTargets[i].depth-1, oBattleEffect, {sprite_index: currentAction.effectSprite});
                     }
                 }
-       
-;
             }
         }
     } else {
-// Bullet hell freeze
-if (currentUser.object_index == oBattleUnitEnemy && bulletHellActive) {
-    bulletTimer--;
+        // Bullet hell freeze
+        if (currentUser.object_index == oBattleUnitEnemy && bulletHellActive) {
+            bulletTimer--;
 
-    // Only end bullet hell when timer runs out
-    if (bulletTimer <= 0) {
-        bulletHellActive = false;
+            if (bulletTimer <= 0) {
+                bulletHellActive = false;
+                if (instance_exists(attack)) {
+                    for (var i = 0; i < 12; i++) attack.alarm[i] = -1;
+                    instance_destroy(attack);
+                }
+                if (instance_exists(global.box)) instance_destroy(global.box);
+                if (instance_exists(soul)) instance_destroy(soul);
 
-        // Stop bullet spawner
-		if (instance_exists(attack)) {
-		    for (var i = 0; i < 12; i++) attack.alarm[i] = -1; // stop any pending alarms
-		    instance_destroy(attack);
-		}
+                with (all) {
+                    if (variable_instance_exists(id, "is_bullet") && is_bullet) instance_destroy();
+                }
 
+                currentUser = noone;
+                battleState = BattleStateTurnProgression;
+                return;
+            }
 
-        // Destroy box and soul
-        if (instance_exists(global.box)) instance_destroy(global.box);
-        if (instance_exists(soul)) instance_destroy(soul);
+            return;
+        }
 
-		with (all) {
-    if (variable_instance_exists(id, "is_bullet") && is_bullet) {
-        instance_destroy();
-    }
-}
-
-
-
-        // Proceed to next battle state
-        currentUser = noone;
-        battleState = BattleStateTurnProgression;
-
-        // Exit step early
-        return;
-    }
-
-    // If timer > 0, just freeze the rest
-    return;
-}
-
-
-
-        // Wait for normal frames
         battleWaitTimeRemaining--;
         if (battleWaitTimeRemaining <= 0) {
             currentUser = noone;
@@ -322,13 +297,13 @@ BattleStateVictoryCheck = function() {
 
     if (partyUnitsByHP[0].hp <= 0) {
         room_goto(rm_title_screen);
-		audio_stop_all();
+        audio_stop_all();
     }
 
     if (enemyUnitsByHP[0].hp <= 0) {
         for (var i=0; i<array_length(global.party); i++)
             global.party[i].hp = partyUnits[i].hp;
-			
+
         audio_stop_all();
         instance_activate_all();
         instance_destroy(creator);
@@ -338,8 +313,7 @@ BattleStateVictoryCheck = function() {
     }
 };
 
-// Initialize state machine
-battleState = BattleStateSelectAction;
+
 
 // Refresh health at start
 RefreshPartyHealthOrder();
