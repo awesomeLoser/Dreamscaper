@@ -1,4 +1,5 @@
 depth = -99999;
+in_cutscene = true;
 
 //textbox parameters
 textbox_width = 200;
