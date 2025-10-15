@@ -28,7 +28,7 @@ subMenuLevel = 0;
 // Bullet hell control
 bulletHellActive = false;
 firstEnemyThisRound = true;
-bulletTime = 1 * room_speed;
+bulletTime = 10 * room_speed;
 bulletTimer = bulletTime;
 
 // Cursor setup
