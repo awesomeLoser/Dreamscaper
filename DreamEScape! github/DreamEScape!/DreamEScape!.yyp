@@ -94,7 +94,6 @@
     {"id":{"name":"test_room_transitions","path":"rooms/test_room_transitions/test_room_transitions.yy",},},
     {"id":{"name":"test_room_walk_dialouge","path":"rooms/test_room_walk_dialouge/test_room_walk_dialouge.yy",},},
     {"id":{"name":"battle_functions","path":"scripts/battle_functions/battle_functions.yy",},},
-    {"id":{"name":"DecideBulletPattern","path":"scripts/DecideBulletPattern/DecideBulletPattern.yy",},},
     {"id":{"name":"GameData","path":"scripts/GameData/GameData.yy",},},
     {"id":{"name":"MenuFunctions","path":"scripts/MenuFunctions/MenuFunctions.yy",},},
     {"id":{"name":"scr_game_text","path":"scripts/scr_game_text/scr_game_text.yy",},},
