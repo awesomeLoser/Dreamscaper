@@ -1,19 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"obj_Enemy_Bullet_SR",
+  "%Name":"obj_Bullet_Formation_Plus_attack",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_Enemy_Bullet_SR",
+  "name":"obj_Bullet_Formation_Plus_attack",
   "overriddenProperties":[],
   "parent":{
     "name":"Bullets",
     "path":"folders/Fightplayer/Attacks/Bullets.yy",
   },
   "parentObjectId":{
-    "name":"obj_Enemy_Bullet_Parent_2",
-    "path":"objects/obj_Enemy_Bullet_Parent_2/obj_Enemy_Bullet_Parent_2.yy",
+    "name":"obj_Enemy_Bullet_Parent_1",
+    "path":"objects/obj_Enemy_Bullet_Parent_1/obj_Enemy_Bullet_Parent_1.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -32,10 +33,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"Spear_Right_1",
-    "path":"sprites/Spear_Right_1/Spear_Right_1.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

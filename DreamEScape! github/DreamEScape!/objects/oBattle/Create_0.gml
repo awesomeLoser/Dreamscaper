@@ -28,7 +28,7 @@ subMenuLevel = 0;
 // Bullet hell control
 bulletHellActive = false;
 firstEnemyThisRound = true;
-bulletTime = 1 * room_speed;
+bulletTime = 15 * room_speed;
 bulletTimer = bulletTime;
 
 // Cursor setup
@@ -175,13 +175,13 @@ else if (_unit.object_index == oBattleUnitEnemy) {
 		// Spawn bullet pattern based on enemy key
     switch (currentUser.enemyKey) {
         case "tree_test":
-            attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
+            attack = instance_create_layer(100, 12, "Bullets", obj_Bullet_Formation_SpearR);
             break;
         case "bug_test":
-           attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
+           attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_SpearR);
             break;
         default:
-            attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
+            attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_SpearR);
             break;
     }
 
