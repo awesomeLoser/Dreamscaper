@@ -23,12 +23,14 @@ if accept_key {
 		//pause menu
 			case 0:
 			switch(pos) {
-				//start game
+				
 			case 0: room_goto(room_bullet_fight); break;
-			//settings
-			case 1: room_goto(test_room_walk_dialouge); break;
-			//quit game
+			
+			case 1: room_goto(test_room_cutscene_test); break;
+			
 			case 2: room_goto(test_room_rpg_battles); break;
+			
+			case 3: room_goto(dialouge_walk_test); break;
 			}
 		 break;
 	 

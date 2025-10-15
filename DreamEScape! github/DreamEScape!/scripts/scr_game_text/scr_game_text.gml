@@ -76,7 +76,11 @@ function scr_game_text(_text_id){
 	scr_text("ugh you again go away")
 
 	break;
-		
+	
+		case "cutscene": 
+	scr_text("this is a cutscene")
+
+	break;
 		
 	}
 }
