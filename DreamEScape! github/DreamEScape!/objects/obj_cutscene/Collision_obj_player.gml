@@ -5,6 +5,7 @@ if instance_exists(obj_player)
 {
 
         create_textbox(text_id);
+		in_cutscene = true;
         can_talk = false; // lock talking until textbox is done
    
 }

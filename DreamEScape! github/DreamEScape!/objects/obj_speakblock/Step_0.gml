@@ -8,5 +8,6 @@ if instance_exists(obj_player)
     {
         create_textbox(text_id);
         can_talk = false; // lock talking until textbox is done
+		in_cutscene = false;
     }
 }

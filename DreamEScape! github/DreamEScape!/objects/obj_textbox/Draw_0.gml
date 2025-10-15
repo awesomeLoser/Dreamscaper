@@ -1,3 +1,4 @@
+
 var accept_key = keyboard_check_pressed(vk_space);
 
 var textbox_x = camera_get_view_x(view_camera[0]);
@@ -164,7 +165,8 @@ if draw_char == text_length[page]
 			create_textbox(option_link_id[option_pos]);
 		   }
 		instance_destroy();
-		 obj_speakblock.can_talk = true; // lock talking until textbox is done
+	obj_speakblock.can_talk = true;
+		 
 		 times_x_pressed = 0;
 
 		}

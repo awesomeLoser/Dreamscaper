@@ -1,4 +1,7 @@
 ///@param _text_id
+// Object variables
+triggered = false;
+
 function scr_game_text(_text_id){
 	switch(_text_id) 
 	{
@@ -76,11 +79,16 @@ function scr_game_text(_text_id){
 	scr_text("ugh you again go away")
 
 	break;
-	
+
 		case "cutscene": 
 	scr_text("this is a cutscene")
+	scr_text("still a cutscene")
+	scr_text("suprisingly. . . still a cutscene")
 
+	scr_text("woah what the fuck is that")
 	break;
+	
+	
 		
 	}
 }
