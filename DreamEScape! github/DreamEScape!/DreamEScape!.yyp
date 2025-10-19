@@ -103,6 +103,8 @@
     {"id":{"name":"scr_macros","path":"scripts/scr_macros/scr_macros.yy",},},
     {"id":{"name":"scr_textbox_functions","path":"scripts/scr_textbox_functions/scr_textbox_functions.yy",},},
     {"id":{"name":"Script6","path":"scripts/Script6/Script6.yy",},},
+    {"id":{"name":"seq_test_Events9","path":"scripts/seq_test_Events9/seq_test_Events9.yy",},},
+    {"id":{"name":"seq_test","path":"sequences/seq_test/seq_test.yy",},},
     {"id":{"name":"mus_battle","path":"sounds/mus_battle/mus_battle.yy",},},
     {"id":{"name":"snd_voice_oh","path":"sounds/snd_voice_oh/snd_voice_oh.yy",},},
     {"id":{"name":"snd_voice_teto_high","path":"sounds/snd_voice_teto_high/snd_voice_teto_high.yy",},},

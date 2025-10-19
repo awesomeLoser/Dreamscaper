@@ -81,11 +81,14 @@ function scr_game_text(_text_id){
 	break;
 
 		case "cutscene": 
-	scr_text("this is a cutscene")
-	scr_text("still a cutscene")
-	scr_text("suprisingly. . . still a cutscene")
-
+	scr_text("this is a cutscene")	
+	inst_1424EC99.text_id = "cutscene_2"
+	
+	break;
+	
+		case "cutscene_2":
 	scr_text("woah what the fuck is that")
+	
 	break;
 	
 	

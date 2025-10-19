@@ -1,1 +1,0 @@
-can_talk = true;

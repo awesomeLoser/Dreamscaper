@@ -1,11 +1,31 @@
-var right_key = keyboard_check(vk_right);
-var left_key = keyboard_check(vk_left);
-var up_key = keyboard_check(vk_up);
-var down_key = keyboard_check(vk_down);
+if (instance_exists(obj_cutscene))
+{
+	if (obj_cutscene.in_cutscene = false) 
+	{
+
+	var right_key = keyboard_check(vk_right);
+	var left_key = keyboard_check(vk_left);
+	var up_key = keyboard_check(vk_up);
+	var down_key = keyboard_check(vk_down);
 
 
-xspd = (right_key - left_key) * move_spd;
-yspd = (down_key - up_key) * move_spd;
+	xspd = (right_key - left_key) * move_spd;
+	yspd = (down_key - up_key) * move_spd;
+	}
+}
+
+else
+{
+	
+	var right_key = keyboard_check(vk_right);
+	var left_key = keyboard_check(vk_left);
+	var up_key = keyboard_check(vk_up);
+	var down_key = keyboard_check(vk_down);
+
+
+	xspd = (right_key - left_key) * move_spd;
+	yspd = (down_key - up_key) * move_spd;
+}
 
 
 //pause
