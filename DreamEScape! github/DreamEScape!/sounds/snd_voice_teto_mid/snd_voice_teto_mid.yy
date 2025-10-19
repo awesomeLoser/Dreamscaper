@@ -21,5 +21,5 @@
   "sampleRate":44100,
   "soundFile":"snd_voice_teto_mid.wav",
   "type":0,
-  "volume":0.53,
+  "volume":0.25,
 }
