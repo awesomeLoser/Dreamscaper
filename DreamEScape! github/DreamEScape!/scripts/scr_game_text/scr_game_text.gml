@@ -91,7 +91,29 @@ function scr_game_text(_text_id){
 	
 	break;
 	
+			case "save_test_1":
+	scr_text("hey woah im mr save test!")
+	inst_171E3C29_1.text_id = "save_test_2"
 	
+	break;
+	
+				case "save_test_2":
+	
+	scr_text("woah hey lets hope saving works!")
+	
+	break;
+	
+				case "save_test_3":
+	scr_text("Well howdy, I'm miss save test!")
+	inst_171E3C29_1_1.text_id = "save_test_4"
+	
+	break;
+	
+				case "save_test_4":
+	
+	scr_text("hope my husband hasnt bothered you about saving too much!")
+	
+	break;
 		
 	}
 }
