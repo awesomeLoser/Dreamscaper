@@ -19,8 +19,8 @@
   ],
   "name":"debug_Room",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"Test_Rooms",
+    "path":"folders/Rooms/Test_Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

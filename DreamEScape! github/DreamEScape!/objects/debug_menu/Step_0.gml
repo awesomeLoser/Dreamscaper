@@ -31,6 +31,8 @@ if accept_key {
 			case 2: room_goto(test_room_rpg_battles); break;
 			
 			case 3: room_goto(dialouge_walk_test); break;
+			
+			case 4: room_goto(save_test_LV1); break;
 			}
 		 break;
 	 
