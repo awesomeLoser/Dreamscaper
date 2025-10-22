@@ -71,7 +71,7 @@ function scr_game_text(_text_id){
 	
 	case "first_talk": 
 	scr_text("wow nice to meet u for the first time!!")
-	inst_73D19CCE.text_id = "second_talk";
+	global.current_speakblock.text_id = "second_talk";
 
 	break;
 	
@@ -82,7 +82,7 @@ function scr_game_text(_text_id){
 
 		case "cutscene": 
 	scr_text("this is a cutscene")	
-	inst_1424EC99.text_id = "cutscene_2"
+	global.current_speakblock.text_id = "cutscene_2"
 	
 	break;
 	
@@ -93,7 +93,7 @@ function scr_game_text(_text_id){
 	
 			case "save_test_1":
 	scr_text("hey woah im mr save test!")
-	inst_171E3C29_1.text_id = "save_test_2"
+	global.current_speakblock.text_id = "save_test_2"
 	
 	break;
 	
@@ -105,7 +105,7 @@ function scr_game_text(_text_id){
 	
 				case "save_test_3":
 	scr_text("Well howdy, I'm miss save test!")
-	inst_171E3C29_1_1.text_id = "save_test_4"
+	global.current_speakblock.text_id = "save_test_4"
 	
 	break;
 	

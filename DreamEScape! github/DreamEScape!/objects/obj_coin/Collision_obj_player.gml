@@ -1,3 +1,3 @@
-obj_player.coinCount++;
+global.coinCount++;
 instance_destroy(self);
-show_debug_message(string(obj_player.coinCount));
+show_debug_message(string(global.coinCount));
