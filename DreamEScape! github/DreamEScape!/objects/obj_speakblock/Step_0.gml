@@ -6,8 +6,10 @@ if instance_exists(obj_player)
 {
     if keyboard_check_pressed(input_key)
     {
+		global.current_speakblock = id;
         create_textbox(text_id);
         can_talk = false; // lock talking until textbox is done
 		in_cutscene = false;
+		
     }
 }

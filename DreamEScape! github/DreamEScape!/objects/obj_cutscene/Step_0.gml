@@ -9,7 +9,8 @@ if (cutscene_test == true)
     {
         if (seq == noone)
         {
-            seq = layer_sequence_create("instances", 141, 100, seq_test);  
+            seq = layer_sequence_create(layer, global.current_speakblock.x, global.current_speakblock.y, seq_test);  
+			layer_sequence_create(layer, global.current_speakblock.x, global.current_speakblock.y, seq_test);
             show_debug_message("Sequence spawned");
         }
         if (seq_test_Moment.sequence_dead = true)
@@ -22,10 +23,10 @@ if (cutscene_test == true)
     // Step 2: Spawn new textbox after sequence ends
     if (cutscene_step == 1)
     {
-        if (!instance_exists(obj_textbox)) // make sure sequence is finished
+        if (!instance_exists(obj_textbox)) 
         {
-            inst_1424EC99.text_id = "cutscene_2"; // new text ID
-            create_textbox(inst_1424EC99.text_id);
+            global.current_speakblock.text_id = "cutscene_2"; // new text ID
+            create_textbox(global.current_speakblock.text_id);
             cutscene_step++; // move to next step
         }
     }
@@ -38,7 +39,7 @@ if (cutscene_test == true)
             can_talk = true;
             in_cutscene = false;
 			cutscene_test = false;
-            instance_destroy(inst_1424EC99);
+            instance_destroy(global.current_speakblock);
             show_debug_message("Cutscene finished");
         }
     }

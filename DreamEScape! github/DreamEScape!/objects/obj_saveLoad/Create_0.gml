@@ -1,4 +1,4 @@
-
+global.coinCount = 0;
 
 global.levelData =
 {

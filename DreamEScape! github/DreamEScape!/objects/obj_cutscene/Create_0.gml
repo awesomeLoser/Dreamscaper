@@ -7,3 +7,5 @@ seq_test_Moment.sequence_dead = false;
 text_id = "";
 input_key = ord("Z");  // the talk button
 can_talk = true;       // can talk from the start
+
+global.current_speakblock = 0;
