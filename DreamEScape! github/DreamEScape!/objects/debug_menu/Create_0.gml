@@ -1,3 +1,5 @@
+global.debugMode = true;
+
 width = 64;
 height = 104;
 
@@ -12,6 +14,7 @@ option[0, 1] = "test_room_cutscene_test";
 option[0, 2] = "test_room_rpg_battles";
 option[0, 3] = "dialouge_walk_test";
 option[0, 4] = "save_test";
+option[0, 5] = "load_save";
 
 
 //settings menu

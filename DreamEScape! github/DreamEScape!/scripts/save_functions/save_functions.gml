@@ -111,4 +111,78 @@ function load_room()
 	}
 }
 
+//overall saving
+function save_game(_fileNum = 0)
+{
+	var _saveArray = array_create(0)
+	
+	//save room you are in
+	save_room();	
+	
+	//set and save stat related stuff
+	global.statData.save_x = obj_player.x;
+	global.statData.save_y = obj_player.y;
+	global.statData.save_rm = room_get_name(room);
+	
+	global.statData.coinCount = global.coinCount;
+	
+	global.statData.party = global.party;
+	
+	array_push(_saveArray, global.statData)
+	
+	//save all room data
+	array_push(_saveArray, global.levelData)
+	
+	//actual saving dont ask me how this works
+	var _filename = "savedata" + string(_fileNum) + ".sav";
+	var _json = json_stringify(_saveArray);
+	var _buffer = buffer_create( string_byte_length(_json) + 1, buffer_fixed, 1 );
+	buffer_write(_buffer, buffer_string, _json);
+	
+	buffer_save(_buffer, _filename);
+	
+	buffer_delete(_buffer);
+	
 
+	
+}
+
+function load_game(_fileNum = 0)
+{
+	//loading our saved data
+		var _filename = "savedata" + string(_fileNum) + ".sav";
+		if !file_exists(_filename) exit;
+		
+		//load the buffer, get the json, and delete buffer again to save memory
+		var _buffer = buffer_load(_filename);
+		var _json = buffer_read(_buffer, buffer_string);
+		buffer_delete(_buffer);
+		
+		//"unstringify" and get the data array
+		var _loadArray = json_parse(_json);
+		
+	//set the data in game to match loaded data
+		global.statData = array_get(_loadArray, 0);
+		global.levelData = array_get(_loadArray, 1);
+		
+		global.coinCount = global.statData.coinCount;
+		global.party = global.statData.party;
+		
+	//use our new data to get back to where we were in the game
+		//go to the correct room
+		var _loadRoom = asset_get_index(global.statData.save_rm);
+		room_goto(_loadRoom);
+				//make sure object saveload doesnt save the area we're exiting from
+				obj_saveLoad.skipRoomSave = true;
+		
+		//create the player object
+		if instance_exists(obj_player) {instance_destroy(obj_player);};
+		instance_create_depth(global.statData.save_x,global.statData.save_y,layer, obj_player)
+		
+		//manually load room
+		load_room();
+		
+		
+		
+	
+}
