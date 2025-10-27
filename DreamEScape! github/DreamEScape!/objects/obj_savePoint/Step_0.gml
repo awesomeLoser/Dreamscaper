@@ -1,10 +1,15 @@
 
 if instance_exists(obj_player) 
 && distance_to_object(obj_player) < 8 
+&& !instance_exists(obj_textbox) 
+&& can_talk
 {
-    if keyboard_check_pressed(obj_speakblock.input_key)
+    if keyboard_check_pressed(input_key)
     {
-		save_game(0)
+		global.current_speakblock = id;
+        create_textbox(text_id);
+        can_talk = false; // lock talking until textbox is done
+		in_cutscene = false;
 		
     }
 }
