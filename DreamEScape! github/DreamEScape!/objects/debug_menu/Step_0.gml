@@ -33,6 +33,8 @@ if accept_key {
 			case 3: room_goto(dialouge_walk_test); break;
 			
 			case 4: room_goto(save_test_LV1); break;
+			
+			case 5: load_game(0); break;
 			}
 		 break;
 	 

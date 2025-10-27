@@ -9,9 +9,10 @@ if instance_exists(obj_player)
         can_talk = false; // lock talking until textbox is done
 		
 
-		if (text_id == "cutscene")
+		if (global.current_speakblock.text_id = "cutscene")
 		{
-		cutscene_test = true	
+		
 		}
+		cutscene_test = true	
 }
 
