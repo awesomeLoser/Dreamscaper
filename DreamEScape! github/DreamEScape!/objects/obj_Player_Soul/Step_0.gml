@@ -2,7 +2,7 @@ var right = keyboard_check(vk_right);
 var left  = keyboard_check(vk_left);
 var up    = keyboard_check(vk_up);
 var down  = keyboard_check(vk_down);
-
+var Space = keyboard_check(vk_space);
 
 var dx = 0;
 var dy = 0;
@@ -10,15 +10,40 @@ var dy = 0;
 var move_x = (right - left) *1.5;
 var move_y = (down - up) *1.5;
 
-x = x +dx * move_x
+x = x + dx * move_x
 y = y + dy * move_y
 move_and_collide(move_x, move_y, obj_Wall_Parent);
 
-//Dash
-//if (keyboard_check(ord("vk_shift")) && keyboard_check(ord("vk_right")))
+//if Space && !dashing
 //{
-//Code to execute when both keys are pressed
+//	alarm[0] = dashDuration //Works
+//dashing = true 
+
 //}
+
+//{
+//if (dashing)
+//move_x = (right - left) *9.5;
+//move_y = (down - up) *9.5;
+
+//}
+//Dash
+//if Space && !dashing
+//{
+//alarm[0] = dashDuration //Works
+//dashing = true //Works
+//show_debug_message("Is this working?")
+//DashHMove = sign(move_x) * dashSpeed
+//DashVMove = sign(VMov) * dashSpeed
+//}
+
+if (dashing)
+{
+move_x = DashHMove
+VMov = DashVMove
+
+}
+//ENDDASH
 
 //Blinking for When player is hit
 #region blinking

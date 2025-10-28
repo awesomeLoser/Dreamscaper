@@ -175,7 +175,7 @@ else if (_unit.object_index == oBattleUnitEnemy) {
 		// Spawn bullet pattern based on enemy key
     switch (currentUser.enemyKey) {
         case "tree_test":
-            attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
+            attack = instance_create_layer(100, 12, "Bullets", obj_Bullet_Formation_Plus_attack);
             break;
         case "bug_test":
            attack = instance_create_layer(100, 12, "soul", obj_Bullet_Formation_Rain);
@@ -195,6 +195,7 @@ else if (_unit.object_index == oBattleUnitEnemy) {
 		global.box.image_xscale = 1;
 		global.box.image_yscale = 0.8;
 
+<<<<<<< Updated upstream
         // Begin its action normally
         BeginAction(currentUser, currentUser.actions[0], partyUnits);
     }
