@@ -1,1 +1,1 @@
-text_id = "bed_save_test";
+text_id = "save_test_1";

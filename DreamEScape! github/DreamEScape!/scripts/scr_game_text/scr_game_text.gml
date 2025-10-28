@@ -114,20 +114,6 @@ function scr_game_text(_text_id){
 	scr_text("hope my husband hasnt bothered you about saving too much!")
 	
 	break;
-	
-	case "bed_save_test":
-	scr_text("The potential future of this odd pink world fills you with determination.")
-		scr_option("Save", "save")
-	   scr_option("Back", "back")
-	break;
-	
-	case "save":
-	scr_text("Game Saved!")
-	save_game(0)
-	break;
-	
-	case "back":
-	scr_text("Game not saved")
-	break;
+		
 	}
 }
