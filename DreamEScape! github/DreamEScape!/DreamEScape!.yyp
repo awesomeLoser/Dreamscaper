@@ -66,6 +66,7 @@
     {"id":{"name":"oBattleUnitPC","path":"objects/oBattleUnitPC/oBattleUnitPC.yy",},},
     {"id":{"name":"obj_Action_Box","path":"objects/obj_Action_Box/obj_Action_Box.yy",},},
     {"id":{"name":"obj_battle_trans","path":"objects/obj_battle_trans/obj_battle_trans.yy",},},
+<<<<<<< Updated upstream
     {"id":{"name":"obj_Bullet_Formation_Drop","path":"objects/obj_Bullet_Formation_Drop/obj_Bullet_Formation_Drop.yy",},},
     {"id":{"name":"obj_Bullet_Formation_Idk","path":"objects/obj_Bullet_Formation_Idk/obj_Bullet_Formation_Idk.yy",},},
     {"id":{"name":"obj_Bullet_Formation_Plus_attack","path":"objects/obj_Bullet_Formation_Plus_attack/obj_Bullet_Formation_Plus_attack.yy",},},
@@ -76,6 +77,14 @@
     {"id":{"name":"obj_cutscene","path":"objects/obj_cutscene/obj_cutscene.yy",},},
     {"id":{"name":"obj_Enemy_Bullet_Parent_1","path":"objects/obj_Enemy_Bullet_Parent_1/obj_Enemy_Bullet_Parent_1.yy",},},
     {"id":{"name":"obj_Enemy_Bullet_Parent_2","path":"objects/obj_Enemy_Bullet_Parent_2/obj_Enemy_Bullet_Parent_2.yy",},},
+=======
+    {"id":{"name":"obj_Bullet_Formation_Plus_attack","path":"objects/obj_Bullet_Formation_Plus_attack/obj_Bullet_Formation_Plus_attack.yy",},},
+    {"id":{"name":"obj_Bullet_Formation_Rain_Cross_attack","path":"objects/obj_Bullet_Formation_Rain_Cross_attack/obj_Bullet_Formation_Rain_Cross_attack.yy",},},
+    {"id":{"name":"obj_Bullet_Formation_Rain","path":"objects/obj_Bullet_Formation_Rain/obj_Bullet_Formation_Rain.yy",},},
+    {"id":{"name":"obj_Bullet_Formation_RainFire","path":"objects/obj_Bullet_Formation_RainFire/obj_Bullet_Formation_RainFire.yy",},},
+    {"id":{"name":"obj_Bullet_Formation_SpearL","path":"objects/obj_Bullet_Formation_SpearL/obj_Bullet_Formation_SpearL.yy",},},
+    {"id":{"name":"obj_Bullet_Formation_SpearR","path":"objects/obj_Bullet_Formation_SpearR/obj_Bullet_Formation_SpearR.yy",},},
+>>>>>>> Stashed changes
     {"id":{"name":"obj_Enemy_Bullet_Parent","path":"objects/obj_Enemy_Bullet_Parent/obj_Enemy_Bullet_Parent.yy",},},
     {"id":{"name":"obj_Enemy_Bullet_SL","path":"objects/obj_Enemy_Bullet_SL/obj_Enemy_Bullet_SL.yy",},},
     {"id":{"name":"obj_Enemy_Bullet_SR","path":"objects/obj_Enemy_Bullet_SR/obj_Enemy_Bullet_SR.yy",},},
@@ -144,9 +153,12 @@
     {"id":{"name":"sAttackIce","path":"sprites/sAttackIce/sAttackIce.yy",},},
     {"id":{"name":"sBox","path":"sprites/sBox/sBox.yy",},},
     {"id":{"name":"Shadowlamp","path":"sprites/Shadowlamp/Shadowlamp.yy",},},
+<<<<<<< Updated upstream
     {"id":{"name":"Spear_Left_1","path":"sprites/Spear_Left_1/Spear_Left_1.yy",},},
     {"id":{"name":"Spear_Right_1","path":"sprites/Spear_Right_1/Spear_Right_1.yy",},},
     {"id":{"name":"Specil_Icon_1_1","path":"sprites/Specil_Icon_1_1/Specil_Icon_1_1.yy",},},
+
+
     {"id":{"name":"Specil_Icon_1","path":"sprites/Specil_Icon_1/Specil_Icon_1.yy",},},
     {"id":{"name":"Specil_Icon_2","path":"sprites/Specil_Icon_2/Specil_Icon_2.yy",},},
     {"id":{"name":"Specil_Icon","path":"sprites/Specil_Icon/Specil_Icon.yy",},},

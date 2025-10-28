@@ -16,3 +16,4 @@ inst_WallLeft.image_yscale = sprite_height;
 inst_WallRight.x  =  bbox_right;
 inst_WallRight.y  =  bbox_top;
 inst_WallRight.image_yscale = sprite_height;
+

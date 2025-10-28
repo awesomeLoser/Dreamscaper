@@ -1,25 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_Bullet_Formation_Plus_attack",
+  "%Name":"obj_Bullet_Formation_Rain_Cross_attack",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_Bullet_Formation_Plus_attack",
+  "name":"obj_Bullet_Formation_Rain_Cross_attack",
   "overriddenProperties":[],
   "parent":{
     "name":"Bullets",
     "path":"folders/Fightplayer/Attacks/Bullets.yy",
   },
-<<<<<<< Updated upstream
-  "parentObjectId":{
-    "name":"obj_Enemy_Bullet_Parent_1",
-    "path":"objects/obj_Enemy_Bullet_Parent_1/obj_Enemy_Bullet_Parent_1.yy",
-  },
-=======
   "parentObjectId":null,
->>>>>>> Stashed changes
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

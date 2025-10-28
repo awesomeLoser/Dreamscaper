@@ -195,6 +195,7 @@ else if (_unit.object_index == oBattleUnitEnemy) {
 		global.box.image_xscale = 1;
 		global.box.image_yscale = 0.8;
 
+<<<<<<< Updated upstream
         // Begin its action normally
         BeginAction(currentUser, currentUser.actions[0], partyUnits);
     }
