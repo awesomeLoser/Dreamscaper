@@ -35,8 +35,13 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
+<<<<<<< Updated upstream
     "name":"Specil_Icon_1_1",
     "path":"sprites/Specil_Icon_1_1/Specil_Icon_1_1.yy",
+=======
+    "name":"Specil_Icon_1_2",
+    "path":"sprites/Specil_Icon_1_2/Specil_Icon_1_2.yy",
+>>>>>>> Stashed changes
   },
   "spriteMaskId":null,
   "visible":true,

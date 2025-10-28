@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Specil_Icon_2",
-    "path":"sprites/Specil_Icon_2/Specil_Icon_2.yy",
+    "name":"Specil_Icon_2_1",
+    "path":"sprites/Specil_Icon_2_1/Specil_Icon_2_1.yy",
   },
   "spriteMaskId":null,
   "visible":true,
