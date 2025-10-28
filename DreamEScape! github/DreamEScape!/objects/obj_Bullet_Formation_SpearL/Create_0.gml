@@ -1,7 +1,7 @@
 
 
 // Inherit the parent event
-bullet_Dmg = 1;
+
 bullet_Inst = obj_Enemy_Bullet_SL;
 
 spawnTime = irandom_range(1, 5);

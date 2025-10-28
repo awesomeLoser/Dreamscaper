@@ -1,5 +1,6 @@
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 var pickX = random_range(obj_Action_Box.bbox_left + -400, obj_Action_Box.bbox_left + -300 );
 
 var  bullet = instance_create_layer(pickX, obj_Action_Box.bbox_left - random_range(obj_Action_Box.bbox_bottom + 20, obj_Action_Box.bbox_top + 20 ), layer, bullet_Inst, {
@@ -9,6 +10,12 @@ var pickX = random_range(obj_Action_Box.bbox_left + -1550, obj_Action_Box.bbox_t
 
 var  bullet = instance_create_layer(pickX, obj_Action_Box.bbox_left - random_range(obj_Action_Box.bbox_bottom + -90, obj_Action_Box.bbox_top + -220 ), layer, bullet_Inst, {
 	gravity : 0.06,
+>>>>>>> Stashed changes
+=======
+var pickX = random_range(obj_Action_Box.bbox_left + -400, obj_Action_Box.bbox_left + -300 );
+
+var  bullet = instance_create_layer(pickX, obj_Action_Box.bbox_left - random_range(obj_Action_Box.bbox_bottom + 20, obj_Action_Box.bbox_top + 20 ), layer, bullet_Inst, {
+	gravity : 0.04,
 >>>>>>> Stashed changes
 	gravity_direction : 0,
 	

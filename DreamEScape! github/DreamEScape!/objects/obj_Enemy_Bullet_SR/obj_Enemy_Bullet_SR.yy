@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Spear_Right_1",
-    "path":"sprites/Spear_Right_1/Spear_Right_1.yy",
+    "name":"Spear_Right_1_1",
+    "path":"sprites/Spear_Right_1_1/Spear_Right_1_1.yy",
   },
   "spriteMaskId":null,
   "visible":true,
