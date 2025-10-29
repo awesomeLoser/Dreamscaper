@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_player_down",
-    "path":"sprites/spr_player_down/spr_player_down.yy",
+    "name":"Mira___Front_Walk_sprite",
+    "path":"sprites/Mira___Front_Walk_sprite/Mira___Front_Walk_sprite.yy",
   },
   "spriteMaskId":null,
   "visible":true,
