@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"Tile sprites",
+    "path":"folders/Sprites/Tile sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -18,8 +18,8 @@
   ],
   "name":"room_bullet_fight",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"Test_Rooms",
+    "path":"folders/Rooms/Test_Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
