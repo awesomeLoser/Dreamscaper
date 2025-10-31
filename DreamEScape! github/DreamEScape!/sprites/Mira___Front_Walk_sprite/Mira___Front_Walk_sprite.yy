@@ -1,11 +1,11 @@
 {
   "$GMSprite":"",
   "%Name":"Mira___Front_Walk_sprite",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":63,
   "bbox_left":0,
   "bbox_right":28,
-  "bbox_top":12,
+  "bbox_top":39,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,

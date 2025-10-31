@@ -35,6 +35,9 @@ if accept_key {
 			case 4: room_goto(save_test_LV1); break;
 			
 			case 5: load_game(0); break;
+			
+			case 6: room_goto(rm_mira_bedroom); break;
+			
 			}
 		 break;
 	 

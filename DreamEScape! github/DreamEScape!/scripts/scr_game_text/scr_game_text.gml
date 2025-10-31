@@ -129,5 +129,44 @@ function scr_game_text(_text_id){
 	case "back":
 	scr_text("Game not saved")
 	break;
+	
+		
+	case "Mira_bed":
+	scr_text("*I can't seem to fall back asleep.. ")
+	global.current_speakblock.text_id = "Mira_bed_2"
+	break;
+	
+	case "Mira_bed_2":
+	global.current_speakblock.text_id = "Mira_bed_3"
+	scr_text("*Staring at this bed won’t help me sleep.")
+	break;
+	
+		case "Mira_bed_3":
+	scr_text("*This isn’t deltarune, go through the door.")
+	
+	break;
+	
+	case "Mira_poster":
+	scr_text("*Looks like something's been added")
+	scr_text("*Is that... A rabbit?")
+	global.current_speakblock.text_id = "Mira_poster_2"
+	scr_text("Carnivals aren’t really my thing.")
+	break;
+	
+		case "Mira_poster_2":
+	scr_text("Carnivals aren’t really my thing.")
+	break;
+	
+	case "Mira_window":
+	scr_text("*I feel like I could have done with just one window")
+	scr_text("*But then it wouldn't be even")
+	global.current_speakblock.text_id = "Mira_window_2"
+	break;
+	
+		case "Mira_window_2":
+	scr_text("*Even steven")
+	break;
+	
+	
 	}
 }

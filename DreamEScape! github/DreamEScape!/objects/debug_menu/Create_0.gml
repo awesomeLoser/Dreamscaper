@@ -15,6 +15,7 @@ option[0, 2] = "test_room_rpg_battles";
 option[0, 3] = "dialouge_walk_test";
 option[0, 4] = "save_test";
 option[0, 5] = "load_save";
+option[0, 6] = "rm_mira_bedroom";
 
 
 //settings menu

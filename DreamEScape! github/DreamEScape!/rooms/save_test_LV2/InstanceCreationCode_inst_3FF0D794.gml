@@ -1,1 +1,0 @@
-text_id = "bed_save_test";
