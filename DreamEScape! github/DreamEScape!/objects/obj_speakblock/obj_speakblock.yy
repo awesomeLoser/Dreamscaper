@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_speakblock",
-    "path":"sprites/spr_speakblock/spr_speakblock.yy",
+    "name":"spr_speakblock_4",
+    "path":"sprites/spr_speakblock_4/spr_speakblock_4.yy",
   },
   "spriteMaskId":null,
   "visible":true,

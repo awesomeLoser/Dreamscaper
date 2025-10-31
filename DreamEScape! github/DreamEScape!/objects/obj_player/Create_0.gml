@@ -5,10 +5,10 @@ yspd= 0;
 
 move_spd = 2;
 
-sprite[RIGHT] = Mira_Right_Walk_sprite;
-sprite[UP] = Mira___Back_Walk_sprite;
-sprite[LEFT] = Mira_Left_Walk_sprite;
-sprite[DOWN] = Mira___Front_Walk_sprite;
+sprite[RIGHT] = spr_player_right;
+sprite[UP] = spr_player_up;
+sprite[LEFT] = spr_player_left;
+sprite[DOWN] = spr_player_down;
 
 face = DOWN;
 

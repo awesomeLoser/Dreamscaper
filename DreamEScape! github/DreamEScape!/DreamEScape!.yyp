@@ -41,6 +41,7 @@
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Battle Menu Sprites","folderPath":"folders/Sprites/Battle Menu Sprites.yy","name":"Battle Menu Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"BoxSprites","folderPath":"folders/Sprites/BoxSprites.yy","name":"BoxSprites","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"group1","folderPath":"folders/Sprites/group1.yy","name":"group1","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"mira walk sprites","folderPath":"folders/Sprites/mira walk sprites.yy","name":"mira walk sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"overworldSprites","folderPath":"folders/Sprites/overworldSprites.yy","name":"overworldSprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"test battle sprites","folderPath":"folders/Sprites/test battle sprites.yy","name":"test battle sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -68,47 +69,33 @@
     {"id":{"name":"oBattleUnitPC","path":"objects/oBattleUnitPC/oBattleUnitPC.yy",},},
     {"id":{"name":"obj_Action_Box","path":"objects/obj_Action_Box/obj_Action_Box.yy",},},
     {"id":{"name":"obj_battle_trans","path":"objects/obj_battle_trans/obj_battle_trans.yy",},},
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
     {"id":{"name":"obj_Bullet_Formation_Drop","path":"objects/obj_Bullet_Formation_Drop/obj_Bullet_Formation_Drop.yy",},},
     {"id":{"name":"obj_Bullet_Formation_Idk","path":"objects/obj_Bullet_Formation_Idk/obj_Bullet_Formation_Idk.yy",},},
     {"id":{"name":"obj_Bullet_Formation_Plus_attack","path":"objects/obj_Bullet_Formation_Plus_attack/obj_Bullet_Formation_Plus_attack.yy",},},
     {"id":{"name":"obj_Bullet_Formation_Rain","path":"objects/obj_Bullet_Formation_Rain/obj_Bullet_Formation_Rain.yy",},},
     {"id":{"name":"obj_Bullet_Formation_RainFire","path":"objects/obj_Bullet_Formation_RainFire/obj_Bullet_Formation_RainFire.yy",},},
-<<<<<<< Updated upstream
-    {"id":{"name":"obj_Bullet_Formation_SpearR","path":"objects/obj_Bullet_Formation_SpearR/obj_Bullet_Formation_SpearR.yy",},},
-    {"id":{"name":"obj_coin","path":"objects/obj_coin/obj_coin.yy",},},
-    {"id":{"name":"obj_cutscene","path":"objects/obj_cutscene/obj_cutscene.yy",},},
-    {"id":{"name":"obj_Enemy_Bullet_Parent_1","path":"objects/obj_Enemy_Bullet_Parent_1/obj_Enemy_Bullet_Parent_1.yy",},},
-    {"id":{"name":"obj_Enemy_Bullet_Parent_2","path":"objects/obj_Enemy_Bullet_Parent_2/obj_Enemy_Bullet_Parent_2.yy",},},
-=======
     {"id":{"name":"obj_Bullet_Formation_Plus_attack","path":"objects/obj_Bullet_Formation_Plus_attack/obj_Bullet_Formation_Plus_attack.yy",},},
     {"id":{"name":"obj_Bullet_Formation_Rain_Cross_attack","path":"objects/obj_Bullet_Formation_Rain_Cross_attack/obj_Bullet_Formation_Rain_Cross_attack.yy",},},
     {"id":{"name":"obj_Bullet_Formation_Rain","path":"objects/obj_Bullet_Formation_Rain/obj_Bullet_Formation_Rain.yy",},},
     {"id":{"name":"obj_Bullet_Formation_RainFire","path":"objects/obj_Bullet_Formation_RainFire/obj_Bullet_Formation_RainFire.yy",},},
     {"id":{"name":"obj_Bullet_Formation_SpearL","path":"objects/obj_Bullet_Formation_SpearL/obj_Bullet_Formation_SpearL.yy",},},
     {"id":{"name":"obj_Bullet_Formation_SpearR","path":"objects/obj_Bullet_Formation_SpearR/obj_Bullet_Formation_SpearR.yy",},},
->>>>>>> Stashed changes
 =======
     {"id":{"name":"obj_Bullet_Formation_SpearR","path":"objects/obj_Bullet_Formation_SpearR/obj_Bullet_Formation_SpearR.yy",},},
     {"id":{"name":"obj_coin","path":"objects/obj_coin/obj_coin.yy",},},
     {"id":{"name":"obj_cutscene","path":"objects/obj_cutscene/obj_cutscene.yy",},},
     {"id":{"name":"obj_Enemy_Bullet_Parent_1","path":"objects/obj_Enemy_Bullet_Parent_1/obj_Enemy_Bullet_Parent_1.yy",},},
     {"id":{"name":"obj_Enemy_Bullet_Parent_2","path":"objects/obj_Enemy_Bullet_Parent_2/obj_Enemy_Bullet_Parent_2.yy",},},
->>>>>>> Stashed changes
+
     {"id":{"name":"obj_Enemy_Bullet_Parent","path":"objects/obj_Enemy_Bullet_Parent/obj_Enemy_Bullet_Parent.yy",},},
     {"id":{"name":"obj_Enemy_Bullet_SL","path":"objects/obj_Enemy_Bullet_SL/obj_Enemy_Bullet_SL.yy",},},
     {"id":{"name":"obj_Enemy_Bullet_SR","path":"objects/obj_Enemy_Bullet_SR/obj_Enemy_Bullet_SR.yy",},},
     {"id":{"name":"obj_Enemy_Bullet_Test","path":"objects/obj_Enemy_Bullet_Test/obj_Enemy_Bullet_Test.yy",},},
     {"id":{"name":"obj_parallax_background","path":"objects/obj_parallax_background/obj_parallax_background.yy",},},
+    {"id":{"name":"obj_pauser_1","path":"objects/obj_pauser_1/obj_pauser_1.yy",},},
     {"id":{"name":"obj_pauser","path":"objects/obj_pauser/obj_pauser.yy",},},
     {"id":{"name":"obj_player_1","path":"objects/obj_player_1/obj_player_1.yy",},},
-<<<<<<< Updated upstream
-=======
     {"id":{"name":"obj_player_2","path":"objects/obj_player_2/obj_player_2.yy",},},
->>>>>>> Stashed changes
     {"id":{"name":"obj_Player_Soul","path":"objects/obj_Player_Soul/obj_Player_Soul.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_saveLoad","path":"objects/obj_saveLoad/obj_saveLoad.yy",},},
@@ -154,15 +141,14 @@
     {"id":{"name":"snd_voice_teto_low","path":"sounds/snd_voice_teto_low/snd_voice_teto_low.yy",},},
     {"id":{"name":"snd_voice_teto_mid","path":"sounds/snd_voice_teto_mid/snd_voice_teto_mid.yy",},},
     {"id":{"name":"AttackSprite_1_1","path":"sprites/AttackSprite_1_1/AttackSprite_1_1.yy",},},
-<<<<<<< Updated upstream
-=======
     {"id":{"name":"AttackSprite_1_2","path":"sprites/AttackSprite_1_2/AttackSprite_1_2.yy",},},
->>>>>>> Stashed changes
     {"id":{"name":"AttackSprite_1","path":"sprites/AttackSprite_1/AttackSprite_1.yy",},},
     {"id":{"name":"Barrier_H","path":"sprites/Barrier_H/Barrier_H.yy",},},
     {"id":{"name":"Barrier_W","path":"sprites/Barrier_W/Barrier_W.yy",},},
     {"id":{"name":"BattleBox_bg","path":"sprites/BattleBox_bg/BattleBox_bg.yy",},},
     {"id":{"name":"BattleBox","path":"sprites/BattleBox/BattleBox.yy",},},
+    {"id":{"name":"Bedbug_ATK2","path":"sprites/Bedbug_ATK2/Bedbug_ATK2.yy",},},
+    {"id":{"name":"Bedbug_IDL3","path":"sprites/Bedbug_IDL3/Bedbug_IDL3.yy",},},
     {"id":{"name":"bg_test","path":"sprites/bg_test/bg_test.yy",},},
     {"id":{"name":"coin","path":"sprites/coin/coin.yy",},},
     {"id":{"name":"Ephialtes___ATTACK_IDLE","path":"sprites/Ephialtes___ATTACK_IDLE/Ephialtes___ATTACK_IDLE.yy",},},
@@ -170,10 +156,7 @@
     {"id":{"name":"Fire_sideway_test","path":"sprites/Fire_sideway_test/Fire_sideway_test.yy",},},
     {"id":{"name":"fire_test_1","path":"sprites/fire_test_1/fire_test_1.yy",},},
     {"id":{"name":"fire_test_2","path":"sprites/fire_test_2/fire_test_2.yy",},},
-<<<<<<< Updated upstream
-=======
     {"id":{"name":"fire_test_3","path":"sprites/fire_test_3/fire_test_3.yy",},},
->>>>>>> Stashed changes
     {"id":{"name":"fire_test","path":"sprites/fire_test/fire_test.yy",},},
     {"id":{"name":"Furniture_Tiles","path":"sprites/Furniture_Tiles/Furniture_Tiles.yy",},},
     {"id":{"name":"Grassy_Wastes_Tiles","path":"sprites/Grassy_Wastes_Tiles/Grassy_Wastes_Tiles.yy",},},
@@ -182,31 +165,33 @@
     {"id":{"name":"Hallway_Tiles","path":"sprites/Hallway_Tiles/Hallway_Tiles.yy",},},
     {"id":{"name":"Mira___Back_Walk_sprite","path":"sprites/Mira___Back_Walk_sprite/Mira___Back_Walk_sprite.yy",},},
     {"id":{"name":"Mira___Front_Walk_sprite","path":"sprites/Mira___Front_Walk_sprite/Mira___Front_Walk_sprite.yy",},},
+    {"id":{"name":"Mira_Atk","path":"sprites/Mira_Atk/Mira_Atk.yy",},},
+    {"id":{"name":"Mira_Def","path":"sprites/Mira_Def/Mira_Def.yy",},},
+    {"id":{"name":"Mira_Idle","path":"sprites/Mira_Idle/Mira_Idle.yy",},},
     {"id":{"name":"Mira_Left_Walk_sprite","path":"sprites/Mira_Left_Walk_sprite/Mira_Left_Walk_sprite.yy",},},
     {"id":{"name":"Mira_Right_Walk_sprite","path":"sprites/Mira_Right_Walk_sprite/Mira_Right_Walk_sprite.yy",},},
     {"id":{"name":"sAttackBonk","path":"sprites/sAttackBonk/sAttackBonk.yy",},},
     {"id":{"name":"sAttackIce","path":"sprites/sAttackIce/sAttackIce.yy",},},
     {"id":{"name":"sBox","path":"sprites/sBox/sBox.yy",},},
+    {"id":{"name":"Shadowlamp_ATK","path":"sprites/Shadowlamp_ATK/Shadowlamp_ATK.yy",},},
     {"id":{"name":"Shadowlamp","path":"sprites/Shadowlamp/Shadowlamp.yy",},},
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+    {"id":{"name":"Shadowlamp72","path":"sprites/Shadowlamp72/Shadowlamp72.yy",},},
     {"id":{"name":"Spear_Left_1","path":"sprites/Spear_Left_1/Spear_Left_1.yy",},},
     {"id":{"name":"Spear_Right_1","path":"sprites/Spear_Right_1/Spear_Right_1.yy",},},
     {"id":{"name":"Specil_Icon_1_1","path":"sprites/Specil_Icon_1_1/Specil_Icon_1_1.yy",},},
 
 
-=======
     {"id":{"name":"Spear_Left_1_1","path":"sprites/Spear_Left_1_1/Spear_Left_1_1.yy",},},
     {"id":{"name":"Spear_Left_1","path":"sprites/Spear_Left_1/Spear_Left_1.yy",},},
     {"id":{"name":"Spear_Right_1_1","path":"sprites/Spear_Right_1_1/Spear_Right_1_1.yy",},},
     {"id":{"name":"Spear_Right_1","path":"sprites/Spear_Right_1/Spear_Right_1.yy",},},
     {"id":{"name":"Specil_Icon_1_1","path":"sprites/Specil_Icon_1_1/Specil_Icon_1_1.yy",},},
     {"id":{"name":"Specil_Icon_1_2","path":"sprites/Specil_Icon_1_2/Specil_Icon_1_2.yy",},},
->>>>>>> Stashed changes
     {"id":{"name":"Specil_Icon_1","path":"sprites/Specil_Icon_1/Specil_Icon_1.yy",},},
     {"id":{"name":"Specil_Icon_2_1","path":"sprites/Specil_Icon_2_1/Specil_Icon_2_1.yy",},},
     {"id":{"name":"Specil_Icon_2","path":"sprites/Specil_Icon_2/Specil_Icon_2.yy",},},
     {"id":{"name":"Specil_Icon_3","path":"sprites/Specil_Icon_3/Specil_Icon_3.yy",},},
+
     {"id":{"name":"Specil_Icon","path":"sprites/Specil_Icon/Specil_Icon.yy",},},
     {"id":{"name":"spr_battle_trans","path":"sprites/spr_battle_trans/spr_battle_trans.yy",},},
     {"id":{"name":"spr_Clown_Bastard","path":"sprites/spr_Clown_Bastard/spr_Clown_Bastard.yy",},},
@@ -216,10 +201,7 @@
     {"id":{"name":"spr_menu_arrow","path":"sprites/spr_menu_arrow/spr_menu_arrow.yy",},},
     {"id":{"name":"spr_menu","path":"sprites/spr_menu/spr_menu.yy",},},
     {"id":{"name":"spr_player_down_1","path":"sprites/spr_player_down_1/spr_player_down_1.yy",},},
-<<<<<<< Updated upstream
-=======
     {"id":{"name":"spr_player_down_2","path":"sprites/spr_player_down_2/spr_player_down_2.yy",},},
->>>>>>> Stashed changes
     {"id":{"name":"spr_player_down","path":"sprites/spr_player_down/spr_player_down.yy",},},
     {"id":{"name":"spr_player_left","path":"sprites/spr_player_left/spr_player_left.yy",},},
     {"id":{"name":"spr_player_right","path":"sprites/spr_player_right/spr_player_right.yy",},},
@@ -228,6 +210,10 @@
     {"id":{"name":"spr_speak_ephi","path":"sprites/spr_speak_ephi/spr_speak_ephi.yy",},},
     {"id":{"name":"spr_speak_j_re_t","path":"sprites/spr_speak_j_re_t/spr_speak_j_re_t.yy",},},
     {"id":{"name":"spr_speak_j_re","path":"sprites/spr_speak_j_re/spr_speak_j_re.yy",},},
+    {"id":{"name":"spr_speakblock_1","path":"sprites/spr_speakblock_1/spr_speakblock_1.yy",},},
+    {"id":{"name":"spr_speakblock_2","path":"sprites/spr_speakblock_2/spr_speakblock_2.yy",},},
+    {"id":{"name":"spr_speakblock_3","path":"sprites/spr_speakblock_3/spr_speakblock_3.yy",},},
+    {"id":{"name":"spr_speakblock_4","path":"sprites/spr_speakblock_4/spr_speakblock_4.yy",},},
     {"id":{"name":"spr_speakblock","path":"sprites/spr_speakblock/spr_speakblock.yy",},},
     {"id":{"name":"spr_spk_jevil","path":"sprites/spr_spk_jevil/spr_spk_jevil.yy",},},
     {"id":{"name":"spr_test_happy","path":"sprites/spr_test_happy/spr_test_happy.yy",},},
@@ -251,6 +237,9 @@
     {"id":{"name":"test_bug_idle","path":"sprites/test_bug_idle/test_bug_idle.yy",},},
     {"id":{"name":"test_tree_attack","path":"sprites/test_tree_attack/test_tree_attack.yy",},},
     {"id":{"name":"test_tree_idle","path":"sprites/test_tree_idle/test_tree_idle.yy",},},
+    {"id":{"name":"Tileset___Mira_Flooring","path":"sprites/Tileset___Mira_Flooring/Tileset___Mira_Flooring.yy",},},
+    {"id":{"name":"Tileset___Mira_Walls","path":"sprites/Tileset___Mira_Walls/Tileset___Mira_Walls.yy",},},
+    {"id":{"name":"Tilesets___Mira_OBJECTs","path":"sprites/Tilesets___Mira_OBJECTs/Tilesets___Mira_OBJECTs.yy",},},
     {"id":{"name":"Wastes_Tiles","path":"sprites/Wastes_Tiles/Wastes_Tiles.yy",},},
     {"id":{"name":"tile_furniture","path":"tilesets/tile_furniture/tile_furniture.yy",},},
     {"id":{"name":"tile_grass_wastes","path":"tilesets/tile_grass_wastes/tile_grass_wastes.yy",},},
@@ -259,6 +248,9 @@
     {"id":{"name":"tile_hallway","path":"tilesets/tile_hallway/tile_hallway.yy",},},
     {"id":{"name":"tile_wastes","path":"tilesets/tile_wastes/tile_wastes.yy",},},
     {"id":{"name":"ts_house_tiles","path":"tilesets/ts_house_tiles/ts_house_tiles.yy",},},
+    {"id":{"name":"ts_mira_floor","path":"tilesets/ts_mira_floor/ts_mira_floor.yy",},},
+    {"id":{"name":"ts_mira_objects","path":"tilesets/ts_mira_objects/ts_mira_objects.yy",},},
+    {"id":{"name":"ts_mira_walls","path":"tilesets/ts_mira_walls/ts_mira_walls.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

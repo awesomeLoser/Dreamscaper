@@ -82,7 +82,7 @@ global.party =
 	 mp: 10,
 	 mpMax: 15,
 	 strength: 16,
-	 sprites: {idle: test_battle_idle, attack: test_battle_attack, defend: test_battle_defend, down: test_battle_down, cast: test_battle_cast},
+	 sprites: {idle: Mira_Idle, attack: Mira_Atk, defend: Mira_Atk, down: test_battle_down, cast: test_battle_cast},
 	 actions: [global.actionLibrary.attack, global.actionLibrary.ice]
 	}
 ];
@@ -98,7 +98,7 @@ global.party =
         mp: 0,
         mpMax: 0,
         strength: 5,
-        sprites: {idle: test_tree_idle, attack: test_tree_attack},
+        sprites: {idle: Bedbug_IDL3, attack: Bedbug_ATK2},
         actions: [global.actionLibrary.attack],
         xpValue: 15,
         AIscript: function()

@@ -1,11 +1,11 @@
 {
   "$GMSprite":"",
   "%Name":"Mira___Back_Walk_sprite",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":63,
   "bbox_left":3,
   "bbox_right":31,
-  "bbox_top":12,
+  "bbox_top":38,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
