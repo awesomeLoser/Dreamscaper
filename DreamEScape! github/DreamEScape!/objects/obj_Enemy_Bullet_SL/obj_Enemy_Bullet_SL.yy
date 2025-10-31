@@ -11,7 +11,10 @@
     "name":"Bullets",
     "path":"folders/Fightplayer/Attacks/Bullets.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_Enemy_Bullet_Parent_2",
+    "path":"objects/obj_Enemy_Bullet_Parent_2/obj_Enemy_Bullet_Parent_2.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Spear_Left",
-    "path":"sprites/Spear_Left/Spear_Left.yy",
+    "name":"Spear_Left_1_1",
+    "path":"sprites/Spear_Left_1_1/Spear_Left_1_1.yy",
   },
   "spriteMaskId":null,
   "visible":true,
