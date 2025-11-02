@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"Furniture_Tiles",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c3f84ba4-e7e9-4bdf-9a96-d3cd4ad34a5a","name":"c3f84ba4-e7e9-4bdf-9a96-d3cd4ad34a5a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c3f84ba4-e7e9-4bdf-9a96-d3cd4ad34a5a","name":"c3f84ba4-e7e9-4bdf-9a96-d3cd4ad34a5a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

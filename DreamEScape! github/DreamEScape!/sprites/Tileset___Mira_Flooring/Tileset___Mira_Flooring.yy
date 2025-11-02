@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"Tileset___Mira_Flooring",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"cda347dc-0376-41d6-83d0-6ee3ba4fed94","name":"cda347dc-0376-41d6-83d0-6ee3ba4fed94","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"cda347dc-0376-41d6-83d0-6ee3ba4fed94","name":"cda347dc-0376-41d6-83d0-6ee3ba4fed94","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

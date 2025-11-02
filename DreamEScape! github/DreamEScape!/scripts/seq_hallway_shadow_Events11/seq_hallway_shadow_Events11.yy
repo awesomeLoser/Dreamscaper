@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"seq_hallway_shadow_Events11",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"seq_hallway_shadow_Events11",
+  "parent":{
+    "name":"Sequences",
+    "path":"folders/Sequences.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

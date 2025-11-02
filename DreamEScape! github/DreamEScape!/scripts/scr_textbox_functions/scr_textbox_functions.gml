@@ -117,7 +117,7 @@ function scr_text(_text){
 				
 				//metamorphosis
 				case "metamorphosis":
-				speaker_sprite[page_number] = spr_speak_ephi;
+				speaker_sprite[page_number] = Ephialtes___Dialogue_Icon_NEW;
 				txtb_spr[page_number] = spr_textbox_eyes
 				snd[page_number] = snd_voice_oh;
 				break;

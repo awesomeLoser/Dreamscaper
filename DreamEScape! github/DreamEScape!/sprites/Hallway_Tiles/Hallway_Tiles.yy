@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"Hallway_Tiles",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"bc8cdf6b-114b-44a8-ac5b-2d9575baabe9","name":"bc8cdf6b-114b-44a8-ac5b-2d9575baabe9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"bc8cdf6b-114b-44a8-ac5b-2d9575baabe9","name":"bc8cdf6b-114b-44a8-ac5b-2d9575baabe9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

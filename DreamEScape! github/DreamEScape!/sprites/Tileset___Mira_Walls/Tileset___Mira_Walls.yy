@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"Tileset___Mira_Walls",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"daab8b2b-1d89-44ca-ba24-39df0e0bde79","name":"daab8b2b-1d89-44ca-ba24-39df0e0bde79","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"daab8b2b-1d89-44ca-ba24-39df0e0bde79","name":"daab8b2b-1d89-44ca-ba24-39df0e0bde79","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"Hallway_Half_Distortion_Tiles",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"562014c7-44a3-4ccf-b54f-8ea91904ed8f","name":"562014c7-44a3-4ccf-b54f-8ea91904ed8f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"562014c7-44a3-4ccf-b54f-8ea91904ed8f","name":"562014c7-44a3-4ccf-b54f-8ea91904ed8f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

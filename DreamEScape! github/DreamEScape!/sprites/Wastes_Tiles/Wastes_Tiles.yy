@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"Wastes_Tiles",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"04c19ef6-2c56-4139-b50f-4dd9ec5d3fec","name":"04c19ef6-2c56-4139-b50f-4dd9ec5d3fec","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"04c19ef6-2c56-4139-b50f-4dd9ec5d3fec","name":"04c19ef6-2c56-4139-b50f-4dd9ec5d3fec","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

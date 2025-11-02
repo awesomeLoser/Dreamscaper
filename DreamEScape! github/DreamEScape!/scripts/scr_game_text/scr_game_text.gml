@@ -147,10 +147,9 @@ function scr_game_text(_text_id){
 	break;
 	
 	case "Mira_poster":
-	scr_text("*Looks like something's been added")
+	scr_text("*Huh.. something looks off..")
 	scr_text("*Is that... A rabbit?")
 	global.current_speakblock.text_id = "Mira_poster_2"
-	scr_text("Carnivals aren’t really my thing.")
 	break;
 	
 		case "Mira_poster_2":
@@ -166,6 +165,21 @@ function scr_game_text(_text_id){
 		case "Mira_window_2":
 	scr_text("*Even steven")
 	break;
+	
+	
+	
+			case "cut_hall":
+	scr_text("*My apologies dear girl, I do try not to interfere as per the rules, but...", "metamorphosis", 1)
+	scr_text("*Well. you're safe now, by any means.", "metamorphosis", 1)
+	scr_text("*Interesting... You have not yet awoken..", "metamorphosis", 1)
+	scr_text("*And that door..", "metamorphosis", 1)
+	scr_text("*Well anyway, I'm afraid I must say my goodbyes for now.", "metamorphosis", 1)
+	scr_text("*You cant follow where I'm going, Unless...", "metamorphosis", 1)
+	scr_text("*Well.. I guess we'll see won't we...", "metamorphosis", 1)
+	break;
+	
+	
+	
 	
 	
 	}

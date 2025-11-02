@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"spr_house_tiles",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"1f0d463a-52ea-48e7-bfc2-0efe763fbd11","name":"1f0d463a-52ea-48e7-bfc2-0efe763fbd11","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"1f0d463a-52ea-48e7-bfc2-0efe763fbd11","name":"1f0d463a-52ea-48e7-bfc2-0efe763fbd11","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

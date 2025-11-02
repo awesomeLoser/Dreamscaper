@@ -6,8 +6,8 @@
   "name":"obj_wall",
   "overriddenProperties":[],
   "parent":{
-    "name":"Basic_Overworld",
-    "path":"folders/Objects/Basic_Overworld.yy",
+    "name":"Main_Menu",
+    "path":"folders/Objects/Main_Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,
